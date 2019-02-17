@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Unit 5 - A1 - 6007007
+	</title>
+	<style type="text/css">
+	body {
+		font-family: sans-serif;
+		background-image: url("pic/bg.gif");
+	}
+	h1,h2,h3{
+		text-align:center;
+		text-transform:uppercase;
+		color : white;
+	}
+	div{
+		background: linear-gradient(to right,white 10%, black 90%)
+	}
+	h1{
+		margin:2em auto;
+		background:linear-gradient(to left,violet 10%, black 90%);
+	}
+	game{
+		border: 3px solid white;
+		display:block;
+		margin:2em auto;
+		background-image: url("pic/bg.gif");
+		width:300px;
+		height:300px;
+		position:relative;
+		border-radius:10px;
+		overflow:hidden;
+	}
+	pit{
+		box-shadow: 0px 0px 10px;
+		display:block;
+		background: hsla(360, 100%, 100%, 0.3);
+		width:100px;
+		height:100px;
+		position:absolute;
+		left:0px;
+		top:0px;
+		text-align: center;
+		color: white;
+		text-shadow: 0px 0px 20px;
+	}
+
+
+
+	/*  แก้เฉพาะด้านล่างเอง */
+
+	pit[y="1"]{
+		top:100px;
+	}
+	pit[y="2"]{
+		top:200px;
+	}
+	pit[y="3"]{
+		top:300px;
+	}
+	pit[x="1"]{
+		left:100px;
+	}
+	pit[x="2"]{
+		left:200px;
+	}
+	pit[x="3"]{
+		left:300px;
+	}
+
+	pit[status="mole"]{
+		background: hsla(283, 100%, 63%, 0.79);
+		border: 100px hsla(283, 100%, 63%, 0.79);
+		box-shadow: 0px 0px 200px hsla(283, 100%, 93%, 0.79);
+	}
+	pit[status="die"]{
+		background:hsla(360, 100%, 100%, 0.3);
+	}
+	pit[status="miss"]{
+		background:hsla(2, 100%, 36%, 0.63);
+	}
+
+</style>
+</head>
+<body>
+	<h1>Play my piano :)</h1>
+	<h3 id="subTitle">loading...</h3>
+
+
+	<!-- ตัวนับถอยหลัง -->
+	<h2>time left: <span id="theTime">10</span> </h2>
+
+	<!--
+		กล่องตารางเกม
+		สถานะของตุ่นที่จะอยู่ใน pit ได้แก่
+		1.blank (ไม่มีตุ่น) 2.mole (มีตุ่น) 3.die (ตีโดน) 4.miss (ตีผิด)
+	-->
+	<game>
+		<pit x="0" y="0" status="blank" data-key="7"><br><br>7</pit>
+		<pit x="1" y="0" status="blank" data-key="8"><br><br>8</pit>
+		<pit x="2" y="0" status="blank" data-key="9"><br><br>9</pit>
+		<pit x="0" y="1" status="blank" data-key="4"><br><br>4</pit>
+		<pit x="1" y="1" status="blank" data-key="5"><br><br>5</pit>
+		<pit x="2" y="1" status="blank" data-key="6"><br><br>6</pit>
+		<pit x="0" y="2" status="blank" data-key="1"><br><br>1</pit>
+		<pit x="1" y="2" status="blank" data-key="2"><br><br>2</pit>
+		<pit x="2" y="2" status="blank" data-key="3"><br><br>3</pit>
+
+	</game>
+	<audio data-key="1" src="Sound_note/DO.wav"></audio>
+	<audio data-key="2" src="Sound_note/RE.wav"></audio>
+	<audio data-key="3" src="Sound_note/MI.wav"></audio>
+	<audio data-key="4" src="Sound_note/FA.wav"></audio>
+	<audio data-key="5" src="Sound_note/SOL.wav"></audio>
+	<audio data-key="7" src="Sound_note/LA.wav"></audio>
+	<audio data-key="6" src="Sound_note/SI.wav"></audio>
+	<audio data-key="0" src="Sound_note/DO2.wav"></audio>
+	<!-- นับคะแนน -->
+	<h2>Progress: <span id="theScore">0%</span></h2>
+
+
+
+
+	<script>
+	// เรียกกล่อง pit ทุก pit มาให้ js ใช้งาน
+	pits = document.querySelectorAll('pit');
+	note = 0;
+	// เวลาในการเตรียมตัว (s)
+	preparing = 1;
+	// ระยะเวลาที่ตุ่นจะเกิด (ms)
+	birth = 500;
+	// ระยะเวลาที่ตุ่นจะอยู่รอโดนตี (ms)
+	delay = 2000;
+	song1 = [1, 1, 1, 3, 5, 3, 1, 2, 2, 2, 5, 2, 5, 3, 3, 4, 5, 2, 3, 4, 5, 5, 5, 4, 3, 2, 3, 3, 3, 4, 5, 5, 4, 3, 2, 1, 1, 2, 3, 3, 2, 2, 3, 3, 4, 5, 5, 4, 3, 2, 1, 1, 2, 3, 2, 1, 1];
+	//ทำบอกวิธีเล่นว่าเล่นบน numpad
+	// [3, 3, 4, 5, 5, 4, 3, 2, 1, 1, 2, 3, 3, 2, 3, 3, 4, 5, 5, 4, 3, 2, 1, 1, 2, 3, 2, 1]
+	// [1, 1, 3, 3, 2, 1, 3, 2, 1, 2, 3, 2, 1, 3, 3, 3, 3, 3, 3, 3, 5, 1, 2, 3, 4, 4, 4, 4, 4, 3, 3];
+	lastpit = 0;
+	code = {"g":0, "h":1, "i":2, "d":3, "e":4, "f":5, "a":6, "b":7, "c":8};
+
+	//ฟังก์ชันหลังโหลดเว็บเสร็จ จะนับถอยหลัง 5 วินาที แล้วเริ่มเกม
+	function ready(){
+		// คะแนนเริ่มต้น
+		lastpit = 0;
+		score = 0;
+		// เวลาในการเล่นเกม (s)
+		note = 0;
+		time = Math.floor(song1.length*2/3);
+		// รีเซ็ทเวลา
+		updateTime();
+		// รีเซ็ทคะแนนให้คนดู
+		updatScore();
+		// reset ทุกหลุมให้ว่าง
+		for (var i = 0; i < pits.length; i++) {
+			pits[i].setAttribute("status","blank");
+		}
+
+		for (let i = 0; i < preparing; i++) {
+			setTimeout(
+				function(){
+					console.log(i);
+					subTitle.innerText = "Ready! Game start in "+(preparing-i);
+				},i*1000);
+		}
+		// หมดเวลาเตรียมตัว เรื่มเกมได้!
+		setTimeout(
+			function(){
+				subTitle.innerText = "Enjoy Music !\nuse your numpad.";
+				countdown();
+				reloadMole();
+			}
+			,preparing*1000);
+	}
+
+	// สำหรับสั่งให้เวลาลด
+	function countdown(){
+		// ทุกๆ 1 วินาที เวลาต้องลด
+		cd = setInterval(
+			function(){
+				// ถ้ายังไม่หมดเวลา
+				if (time > 0) {
+					// ลดเวลา
+					time--;
+					// อัพเดทเวลา
+					updateTime();
+				}
+				// ถ้าหมดเวลา
+				else{
+					clearInterval(cd);
+					console.log("END");
+				}
+			}
+			,1000)
+	}
+
+	// ฟังก์ชันเกม โดยจะคอยเรียกตัวเองจนกว่าจะตาย หลักการคือ ทุกๆ เวลา birth จะมีตุ่นโผล่หน้ามา โดยสุ่มว่าจะเกิดที่ไหน จากนั้นจะรอใหโดนตีตามเวลา delay ถ้าหมดเวลา delay ยังไม่โดนตี จะหายไป
+	function reloadMole(){
+		// ถ้าเวลาไม่หมด ให้ทำตามนี
+		if (time>0 || song1.length != score) {
+			// สุ่มเลขหลุมที่จะเกิด ตั้งแต่เลข 0 ถึง 15
+			var randomPit = Math.floor(Math.random() * 9);
+			while (randomPit == lastpit){
+				randomPit = Math.floor(Math.random() * 9);
+			}
+			pits[randomPit].setAttribute("status","mole");
+
+
+		}
+	}
+	function soundon(n){
+		audio = document.querySelector(`audio[data-key="` + String(song1[n]) + `"]`)
+		audio.currentTime = 0;
+		audio.play();
+		note = (note + 1)%song1.length;
+	}
+
+    // สำหรับการตี
+    function hit(keycode){
+    	// ตีได้ต่อเมื่อไม่หมดเวลา
+    	if (pits[code[keycode]].getAttribute("status") == "mole" && score != song1.length){
+    		soundon(note)
+    		lastpit = code[keycode];
+    		}
+
+    	if (time>0) {
+    		// ดูว่า  status ตอนนี้คืออะไร
+    		var status = pits[code[keycode]].getAttribute("status");
+    		// ถ้าตีโดนตุ่น ปรับเป็น die
+    		if (status == "mole") {
+    			pits[code[keycode]].setAttribute("status","die");
+    			// กดถูกได้คะแนน
+    			score++;
+    			reloadMole();
+
+    		}
+    		// ถ้าตีโดน blank จะกลายเป็น miss
+    		else if(status == "blank"){
+    			pits[code[keycode]].setAttribute("status","miss");
+    		}
+    		// แสดงคะแนนให้คนดู
+    		updatScore();
+    		updateTime();
+    	}
+    }
+
+    // สำรหรับโชว์คะแนน
+    function updatScore(){
+    	// แสดงคะแนนให้คนดู
+    	theScore.innerText = Math.floor(score/song1.length*100) + "%";
+    }
+
+    //สำหรับโชว์เวลา
+    function updateTime(){
+    	// แสดงเวลา
+    	theTime.innerText = time;
+    	// ถ้าหมดเวลา ให้บอก
+    	if (score == song1.length){
+    		time = 0;
+    	}
+    	if (time == 0) {
+    		subTitle.innerHTML = "<div>That Amazing!<br> <a href='#!' onclick='ready()'>play again</a></div>";
+    		soundon(1);
+    		soundon(2);
+    		soundon(3);
+    		soundon(4);
+    		soundon(5);
+    	}
+
+    }
+
+    document.onkeydown = function(e){
+        var key_code = String.fromCharCode(event.keyCode);
+        hit(key_code);
+    }
+
+    ready();
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+body{
+    background-color:rgb(43, 66, 91);
+}
+game{
+    margin: 30px auto;
+    display:block;
+    height: 600px;
+    width: 406px;
+    background-color: #8E84B4;
+    position: relative;
+}
+pianokey{
+    width: 50px;
+    height: 150px;
+    display: block;
+    border: 3px solid red;
+    position: absolute;
+    background-color: white;
+}
+
+sharpkey{
+    width: 25px;
+    height: 100px;
+    display: block;
+    position: absolute;
+    background-color: blue;
+}
+
+pianokey[status="unpress"]{
+    background-color: #FFFFFF;
+}
+
+pianokey[status = "onpress"]{
+    background-color: #C0C0C0;
+}
+
+sharpkey[status="unpress"]{
+    background-color: #000000;
+}
+
+sharpkey[status = "onpress"]{
+    background-color: #404040;
+}
+
+sharpkey>p{
+    color:white;
+}
+
+p{
+    margin-top: 90%;
+    margin-left: 30%;
+}
+
+#S6{
+    width: 20px;
+}
+
+#subtitle{
+    color:white;
+}
+
+h1{
+    color:white;
+}
