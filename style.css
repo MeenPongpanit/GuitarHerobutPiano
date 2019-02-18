@@ -1,64 +1,98 @@
-body{
-    background-color:rgb(43, 66, 91);
-}
+body{background-color:rgb(43, 66, 91);}
+
 game{
     margin: 30px auto;
     display:block;
     height: 600px;
-    width: 406px;
+    width: 400px;
     background-color: #8E84B4;
     position: relative;
 }
+
 pianokey{
     width: 50px;
     height: 150px;
     display: block;
-    border: 3px solid red;
+    box-shadow: 0px 0px 20px black;
     position: absolute;
     background-color: white;
 }
+
+pianokey[status="unpress"]{background-color: #FFFFFF;}
+
+pianokey[status = "onpress"]{background-color: #C0C0C0;}
 
 sharpkey{
     width: 25px;
     height: 100px;
     display: block;
     position: absolute;
-    background-color: blue;
+    box-shadow: 0px 0px 20px white;
 }
 
-pianokey[status="unpress"]{
-    background-color: #FFFFFF;
+sharpkey#S6{width: 13px;}
+
+sharpkey[status="unpress"]{background-color: #000000;}
+
+sharpkey[status = "onpress"]{background-color: #404040;}
+
+sharpkey>p{color:white;}
+
+div.note{
+    display:block;
+    height: 20px;
+    width: 50px;
+    background-color: red;
+    position:absolute;
 }
 
-pianokey[status = "onpress"]{
-    background-color: #C0C0C0;
+div.note[size = "0.5"]{height: 10px;}
+
+div.note[size = "1"]{height: 20px;}
+
+div.note[size = "2"]{height: 40px;}
+
+div.note[size = "3"]{height: 60px;}
+
+div.note[size = "4"]{height: 80px;}
+
+div.note[hit = "yes"]{background-color: yellow;}
+
+tile{
+    box-shadow: 0px 0px 2px white;
 }
 
-sharpkey[status="unpress"]{
-    background-color: #000000;
+tile[keytype = "normal"]{
+    display: block;
+    height: 450px;
+    width: 50px;
+    background-color: rgba(0, 0, 153, 0.2);
+    position: absolute;
 }
 
-sharpkey[status = "onpress"]{
-    background-color: #404040;
+tile[status = "unpress"]{background-color: rgba(0, 0, 153, 0.2);}
+
+tile[keytype = "normal"][status = "onpress"]{background-color: rgba(0, 0, 153, 0.5);}
+
+tile[keytype = "sharp"]{
+    display: block;
+    height: 450px;
+    width: 25px;
+    background-color: rgba(0, 0, 153, 0.2);
+    position: absolute;
 }
 
-sharpkey>p{
-    color:white;
-}
+tile[keytype = "sharp"][status = "onpress"]{background-color: rgba(0, 0, 153, 0.75);}
+
+tile#TS6{width:13px;}
 
 p{
     margin-top: 90%;
     margin-left: 30%;
 }
 
-#S6{
-    width: 20px;
-}
+#S6{width: 20px;}
 
-#subtitle{
-    color:white;
-}
+#subtitle{color:white;}
 
-h1{
-    color:white;
-}
+h1{color:white;}
