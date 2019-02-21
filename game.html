@@ -1,8 +1,10 @@
 <hmtl>
     <head>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <title>GuitarHeroButPiano</title>
     </head>
 <body>
+    <button onclick="playsound('A')"></button>
     <p id="accuracy">ACC:</p>
         <game>
             <tile id="TC" keytype="normal" x="0" status="unpress"></tile>
@@ -23,20 +25,33 @@
             <pianokey id="D" x="1" status="unpress"><p>S</p></pianokey>
             <pianokey id="E" x="2" status="unpress"><p>D</p></pianokey>
             <pianokey id="F" x="3" status="unpress"><p>F</p></pianokey>
-            <pianokey id="G" x="4" status="onpress"><p>J</p></pianokey>
-            <pianokey id="A" x="5" status="unpress"><p>K</p></pianokey>
-            <pianokey id="B" x="6" status="unpress"><p>L</p></pianokey>
-            <pianokey id="C2" x="7" status="unpress"><p>;</p></pianokey>
+            <pianokey id="G" x="4" status="onpress"><p>G</p></pianokey>
+            <pianokey id="A" x="5" status="unpress"><p>H</p></pianokey>
+            <pianokey id="B" x="6" status="unpress"><p>J</p></pianokey>
+            <pianokey id="C2" x="7" status="unpress"><p>K</p></pianokey>
             <!-- # key -->
             <sharpkey id="S1" x="0.75" status="unpress"><p>W</p></sharpkey>
             <sharpkey id="S2" x="1.75" status="unpress"><p>E</p></sharpkey>
-            <sharpkey id="S3" x="3.75" status="unpress"><p>U</p></sharpkey>
-            <sharpkey id="S4" x="4.75" status="unpress"><p>I</p></sharpkey>
-            <sharpkey id="S5" x="5.75" status="unpress"><p>O</p></sharpkey>
+            <sharpkey id="S3" x="3.75" status="unpress"><p>T</p></sharpkey>
+            <sharpkey id="S4" x="4.75" status="unpress"><p>Y</p></sharpkey>
+            <sharpkey id="S5" x="5.75" status="unpress"><p>U</p></sharpkey>
             <sharpkey id="S6" x="7.75" status="unpress"><p></p></sharpkey>
         </game>
 <!--         <blind></blind> -->
         <h1 id="keypress">keypress:</h1>
+        <audio data-key="A" src="asset/sounduse/C3-4.wav"></audio>
+        <audio data-key="S" src="D3-4.wav"></audio>
+        <audio data-key="D" src="E3-4.wav"></audio>
+        <audio data-key="F" src="F3-4.wav"></audio>
+        <audio data-key="G" src="G3-4.wav"></audio>
+        <audio data-key="H" src="A3-4.wav"></audio>
+        <audio data-key="J" src="B3-4.wav"></audio>
+        <audio data-key="K" src="C4-4.wav"></audio>
+        <audio data-key="W" src="bC3-4.wav"></audio>
+        <audio data-key="E" src="bD3-4.wav"></audio>
+        <audio data-key="T" src="bF3-4.wav"></audio>
+        <audio data-key="Y" src="bA3-4.wav"></audio>
+        <audio data-key="U" src="bB3-4.wav"></audio>
 </body>
-<script src="js.js"></script>
+<script src="js.js" charset="UTF-8"></script>
 </hmtl>

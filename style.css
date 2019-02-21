@@ -65,7 +65,7 @@ div.note[size = "3"]{height: 60px;}
 
 div.note[size = "4"]{height: 80px;}
 
-div.note[hit = "yes"]{background-color: yellow;}
+div.note[hit = "true"]{box-shadow: 0px 0px 20px white; background-color: pink;}
 
 tile{
     box-shadow: 0px 0px 2px white;
@@ -78,6 +78,7 @@ tile[keytype = "normal"]{
     background-color: rgba(0, 0, 153, 0.2);
     position: absolute;
 }
+tile[status = "miss"]{background-color: rgba(153, 0, 0, 0.2);}
 
 tile[status = "unpress"]{background-color: rgba(0, 0, 153, 0.2);}
 

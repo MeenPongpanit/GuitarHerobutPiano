@@ -1,18 +1,62 @@
 var button = {};
-var pressing = "";
-var speed = 1.5;
-var keybutton = {"C":"A", "D":"S", "E":"D", "F":"F", "G":"J", "A":"K", "B":"L", "C2":String.fromCharCode(186), "S1":"W", "S2":"E", "S3":"U", "S4":"I", "S5":"O"};
+var speed = 2.5;
+var keybutton = {"C":"A", "D":"S", "E":"D", "F":"F", "G":"G", "A":"H", "B":"J", "C2":"K", "S1":"W", "S2":"E", "S3":"T", "S4":"Y", "S5":"U"};
+var buttonkey = {"A":"C", "S":"D", "D":"E", "F":"F", "G":"G", "H":"A", "J":"B", "K":"C2", "W":"S1", "E":"S2", "T":"S3", "Y":"S4", "U":"S5"};
 var tilewidth = {"TC":50, "TS1":25, "TD":50, "TS2":25, "TE":50, "TF":50, "TS3":25, "TG":50, "TS4":25, "TA":50, "TS5":25, "TB":50, "TC2":50};
 var score = 0;
+var buttonuse = ["A", "S", "D", "F", "G", "H", "J", "K", "W", "E", "T", "Y", "U"];
 var presscount = 0;
 var notedowned = 0;
+var miss = 0;
+var sound = {
+    "A":document.querySelector(`audio[data-key="A"]`),
+    "S":document.querySelector(`audio[data-key="S"]`),
+    "D":document.querySelector(`audio[data-key="D"]`),
+    "F":document.querySelector(`audio[data-key="F"]`),
+    "G":document.querySelector(`audio[data-key="G"]`),
+    "H":document.querySelector(`audio[data-key="H"]`),
+    "J":document.querySelector(`audio[data-key="J"]`),
+    "K":document.querySelector(`audio[data-key="K"]`),
+    "W":document.querySelector(`audio[data-key="W"]`),
+    "E":document.querySelector(`audio[data-key="E"]`),
+    "T":document.querySelector(`audio[data-key="T"]`),
+    "Y":document.querySelector(`audio[data-key="Y"]`),
+    "U":document.querySelector(`audio[data-key="U"]`)
+};
+var playing = {"A":0, "S":0, "D":0, "F":0, "G":0, "H":0, "J":0, "K":0, "W":0, "E":0, "T":0, "Y":0, "U":0};
 
+
+function playsound(soundname){
+    sound[soundname].currentTime = 0;
+    sound[soundname].play();
+}
+
+function pausesound(soundname){
+    sound[soundname].pause();
+}
+
+
+console.log(String.fromCharCode(186));
 document.onkeydown = document.onkeyup = function(e){
     var key_code = String.fromCharCode(e.keyCode);
     button[key_code] = e.type == "keydown";
     for(i in button){
         if(button[i]){
-            pressing += i + " ";
+            var tileid = document.getElementById("T" + buttonkey[key_code]);
+            if(buttonuse.includes(key_code))
+            if(tileid.hasChildNodes()){
+                var firstnode = tileid.firstChild;
+                var posy = firstnode.getAttribute("y");
+                var notesize = Number(firstnode.getAttribute("size"))*20;
+                var canhit = (posy >= (450 - notesize)) && (posy <= 450);
+                if(!canhit){
+                    updatekeyart("T" + buttonkey[key_code], "miss");
+                    miss += 1;
+                }
+            }
+            else{
+                miss += 1;
+            }
         }
     }
     presscount += e.type == "keyup";
@@ -63,7 +107,7 @@ var fallingnote = [];
 function addnote(tileid, rythm){
     var note = document.createElement("div");
     note.setAttribute("class", "note");
-    note.setAttribute("y", 0);
+    note.setAttribute("y", 300);
     note.setAttribute("size", rythm);
     note.setAttribute("keytohit", tileid.slice(1, tileid.length));
     note.style.width = tilewidth[tileid];
@@ -72,7 +116,7 @@ function addnote(tileid, rythm){
     tile.appendChild(note);
     notedowned += 1;
 }
-var song = [["C", 1], ["D", 0.5], ["E", 2], ["S1", 4], ["B", 3]];
+var song = [["C", 1], ["D", 2], ["E", 3], ["F", 0.5]];
 var songtime = 0;
 for(let i = 0 ; i <= song.length - 1 ; i++){
     songtime += song[i][1]*(i != 0);
@@ -110,11 +154,10 @@ function keyhit(){
         var posy = fallingnote[i].getAttribute("y");
         var notesize = Number(fallingnote[i].getAttribute("size"))*20;
         var canhit = (posy >= (450 - notesize)) && (posy <= 450);
-        keypress.innerText = canhit && button[keybutton[fallingnote[i].getAttribute("keytohit")]];
-        if(canhit && button[keybutton[fallingnote[i].getAttribute("keytohit")]]){
-            fallingnote[i].setAttribute("hit", "yes");
-            score += 10;
-        }
+        var hit = canhit && button[keybutton[fallingnote[i].getAttribute("keytohit")]]
+        // keypress.innerText = canhit && button[keybutton[fallingnote[i].getAttribute("keytohit")]];
+        fallingnote[i].setAttribute("hit", hit);
+        if(hit){score += 10*speed;}
     }
 }
 
@@ -125,12 +168,13 @@ setInterval(function(){
             if(isunboundnote(i)){
                 delunbound(i);
         }
-        keyhit();
     }
 }
-// keypress.innerText = score;
-accuracy.innerText = presscount;
+    keyhit();
+    keypress.innerText = miss   ;
+    // accuracy.innerText = miss;
 }, 50/speed)
-//make wrongpress condition
-//make red bg color tiles when wrong hit
-//reset status of tile when tile's key up
+
+setInterval(function(){
+    keyhit();
+}, 50/speed)
