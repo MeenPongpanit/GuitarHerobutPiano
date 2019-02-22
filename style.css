@@ -48,6 +48,7 @@ sharpkey[status = "onpress"]{background-color: #404040;}
 sharpkey>p{color:white;}
 
 div.note{
+    border: 1px solid white;
     display:block;
     height: 20px;
     width: 50px;
