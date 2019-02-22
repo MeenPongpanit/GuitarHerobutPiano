@@ -67,6 +67,8 @@ div.note[size = "4"]{height: 80px;}
 
 div.note[hit = "true"]{box-shadow: 0px 0px 20px white; background-color: pink;}
 
+tile#T0{display:none;}
+
 tile{
     box-shadow: 0px 0px 2px white;
 }

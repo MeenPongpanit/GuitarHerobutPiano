@@ -126,12 +126,15 @@ function addnote(tileid, rythm){
     note.setAttribute("size", rythm);
     note.setAttribute("keytohit", tileid.slice(1, tileid.length));
     note.style.width = tilewidth[tileid];
+    if(tileid == "0"){
+        note.style.display = "none";
+    }
     fallingnote.push(note);
     tile = document.getElementById(tileid);
     tile.appendChild(note);
     notedowned += 1;
 }
-var song = [["C", 1], ["C", 2], ["E", 3], ["F", 0.5]];
+var song = [["C", 1], ["D", 2], ["0", 2], ["E", 3], ["F", 0.5]];
 var songtime = 0;
 for(let i = 0 ; i <= song.length - 1 ; i++){
     songtime += song[i][1]*(i != 0);
