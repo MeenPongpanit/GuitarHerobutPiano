@@ -46,7 +46,7 @@ var sound = {
     "bD4":document.querySelector(`audio[data-key="bD4"]`),
     "bF4":document.querySelector(`audio[data-key="bF4"]`),
     "bA4":document.querySelector(`audio[data-key="bA4"]`),
-    "bB4":document.querySelector(`audio[data-key="bB4"]`),
+    "bB4":document.querySelector(`audio[data-key="bB4"]`)
 
 };
 var playing = {"A":0, "S":0, "D":0, "F":0, "G":0, "H":0, "K":0, "W":0, "E":0, "T":0, "Y":0, "U":0};
@@ -54,6 +54,7 @@ var playing = {"A":0, "S":0, "D":0, "F":0, "G":0, "H":0, "K":0, "W":0, "E":0, "T
 
 function playsound(soundname, playtime){
     if(playing[soundname] == 0){
+        console.log(soundname);
         playing[soundname] = 1;
         sound[soundname].currentTime = 0;
         sound[soundname].play();
@@ -76,7 +77,6 @@ setInterval(function(){
 }, 50);
 
 
-console.log(String.fromCharCode(186));
 document.onkeydown = document.onkeyup = function(e){
     var key_code = String.fromCharCode(e.keyCode);
     button[key_code] = e.type == "keydown";
@@ -190,7 +190,6 @@ var song = [["C3", 4], ["D3", 4], ["E3", 4], ["F3", 4], ["G3", 4], ["A3", 4], ["
 var songtime = 0;
 for(let i = 0 ; i <= song.length - 1 ; i++){
     songtime += song[i][1]*(i != 0);
-    console.log(songtime*1000/Math.pow(speed, 2));
     setTimeout(function(){
         addnote("T" + song[i][0], song[i][1]);
 
@@ -223,7 +222,7 @@ function keyhit(){
     for(let i = 0 ; i < fallingnote.length ; i++){
         var posy = fallingnote[i].getAttribute("y");
         var notesize = Number(fallingnote[i].getAttribute("size"))*20;
-        var canhit = (posy >= (450 - notesize)) && (posy <= 450);
+        var canhit = (posy >= (445 - notesize)) && (posy <= 450);
         var hit = canhit && button[keybutton[fallingnote[i].getAttribute("keytohit")]]
         // keypress.innerText = canhit && button[keybutton[fallingnote[i].getAttribute("keytohit")]];
         fallingnote[i].setAttribute("hit", hit);
@@ -245,7 +244,7 @@ setInterval(function(){
 }
     keyhit();
     keypress.innerText = JSON.stringify(playing);
-    accuracy.innerText = miss;
+    accuracy.innerText = score;
 }, 50/speed)
 
 setInterval(function(){
