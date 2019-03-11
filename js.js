@@ -65,10 +65,8 @@ function playsound(soundname, playtime){
 }
 
 function pausesound(soundname){
-    setTimeout(function(){
     sound[soundname].pause();
     // playing[soundname] = 0;
-    }, 100)
 }
 
 setInterval(function(){
@@ -167,9 +165,7 @@ function addnote(tileid, rythm){
     notedowned += 1;
 }
 
-var song = [["C3", 4], ["D3", 4], ["E3", 4], ["F3", 4], ["G3", 4], ["A3", 4], ["B3", 4], ["C4", 4]];
-
-// ["C", 2], ["D", 2], ["E", 2], ["E", 1], ["E", 2], ["E", 3], ["0", 1], ["D", 2], ["C", 2], ["D", 2], ["G", 2], ["G", 1], ["G", 3],
+var song = [["C3", 4], ["D3", 2], ["E3", 2], ["E3", 1], ["E3", 2], ["E3", 3], ["0", 1], ["D3", 2], ["C3", 2], ["D3", 2], ["G3", 2], ["G3", 1], ["G3", 3]];
 // ["0", 2], ["C", 2], ["D", 2], ["E", 3], ["E", 2],  ["E", 2], ["0", 1], ["D", 2], ["C", 2], ["D", 2], ["G", 2], ["G", 1], ["G", 3],
 // ["0", 2], ["D", 2], ["E", 2], ["D", 3], ["C", 2], ["C", 4], ["D", 2], ["C", 3], ["G", 2], ["F", 4],
 // ["0", 1], ["D", 2], ["E", 1], ["D", 1], ["C", 2], ["C", 2], ["D", 1], ["E", 2], ["D", 4],
@@ -189,7 +185,7 @@ var song = [["C3", 4], ["D3", 4], ["E3", 4], ["F3", 4], ["G3", 4], ["A3", 4], ["
 
 var songtime = 0;
 for(let i = 0 ; i <= song.length - 1 ; i++){
-    songtime += song[i][1]*(i != 0);
+    songtime += song[i][1]*(i != 0) + 0.4;
     setTimeout(function(){
         if(song[i][0] != "0"){
             addnote("T" + song[i][0], song[i][1]);
