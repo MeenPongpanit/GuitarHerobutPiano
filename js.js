@@ -54,7 +54,8 @@ var sound = {
 // var playing = {};
 
 function playsound(soundname, playtime){
-    var thesound = document.querySelector(`audio[data-key="` + soundname +`"]`)
+    var thesound = document.querySelector(`audio[data-key="` + soundname +`"]`);
+    thesound.pause();
     const playPromise = thesound.play();
     if (playPromise !== null){
         thesound.currentTime = 0;
@@ -222,7 +223,7 @@ function keyhit(){
     for(let i = 0 ; i < fallingnote.length ; i++){
         var posy = fallingnote[i].getAttribute("y");
         var notesize = Number(fallingnote[i].getAttribute("size"))*20;
-        var canhit = (posy >= (445 - notesize)) && (posy <= 450);
+        var canhit = (posy >= (450 - notesize)) && (posy <= 450);
         var hit = canhit && button[keybutton[fallingnote[i].getAttribute("keytohit")]]
         // keypress.innerText = canhit && button[keybutton[fallingnote[i].getAttribute("keytohit")]];
         if(fallingnote[i].getAttribute("hit") == "false" && hit){
