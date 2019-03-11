@@ -1,5 +1,5 @@
 var button = {};
-var speed = 1;
+var speed = 2;
 var keybutton = {"C":"A", "D":"S", "E":"D", "F":"F", "G":"G", "A":"H", "B":"J", "C2":"K", "bC":"W", "bD":"E", "bF":"T", "bA":"Y", "bB":"U"};
 var buttonkey = {"A":"C", "S":"D", "D":"E", "F":"F", "G":"G", "H":"A", "J":"B", "K":"C2", "W":"bC", "E":"bD", "T":"bF", "Y":"bA", "U":"bB"};
 var tilewidth = {"TC":50, "TbC":25, "TD":50, "TbD":25, "TE":50, "TF":50, "TbF":25, "TG":50, "TbA":25, "TA":50, "TbB":25, "TB":50};
@@ -8,6 +8,7 @@ var buttonuse = ["A", "S", "D", "F", "G", "H", "J", "W", "E", "T", "Y", "U"];
 var presscount = 0;
 var notedowned = 0;
 var miss = 0;
+//pull audio element to play.
 var sound = {
     "C2":document.querySelector(`audio[data-key="C2"]`),
     "D2":document.querySelector(`audio[data-key="D2"]`),
@@ -49,26 +50,24 @@ var sound = {
     "bB4":document.querySelector(`audio[data-key="bB4"]`)
 
 };
-var playing = {"A":0, "S":0, "D":0, "F":0, "G":0, "H":0, "K":0, "W":0, "E":0, "T":0, "Y":0, "U":0};
-
+//contain playing note.
+// var playing = {};
 
 function playsound(soundname, playtime){
-    if(playing[soundname] == 0){
         console.log(soundname);
-        playing[soundname] = 1;
+        // playing[soundname] = 1;
         sound[soundname].currentTime = 0;
         sound[soundname].play();
         setTimeout(function(){
             pausesound(soundname);
-            playing[soundname] = 0;
+            // playing[soundname] = 0;
         }, playtime*1000/speed/speed);
-    }
 }
 
 function pausesound(soundname){
     setTimeout(function(){
     sound[soundname].pause();
-    playing[soundname] = 0;
+    // playing[soundname] = 0;
     }, 100)
 }
 
@@ -243,7 +242,7 @@ setInterval(function(){
     }
 }
     keyhit();
-    keypress.innerText = JSON.stringify(playing);
+    // keypress.innerText = JSON.stringify(playing);
     accuracy.innerText = score;
 }, 50/speed)
 
