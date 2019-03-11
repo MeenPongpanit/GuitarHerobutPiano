@@ -190,8 +190,9 @@ var songtime = 0;
 for(let i = 0 ; i <= song.length - 1 ; i++){
     songtime += song[i][1]*(i != 0);
     setTimeout(function(){
-        addnote("T" + song[i][0], song[i][1]);
-
+        if(song[i][0] != "0"){
+            addnote("T" + song[i][0], song[i][1]);
+        }
     }, songtime*1000/Math.pow(speed, 2));
 }
 
