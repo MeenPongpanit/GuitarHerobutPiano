@@ -156,6 +156,7 @@ function addnote(tileid, rythm){
     note.setAttribute("size", rythm);
     note.setAttribute("keytohit", tileid.slice(1, tileid.length - 1));
     note.setAttribute("soundkey", tileid.slice(1, tileid.length));
+    note.setAttribute("hit", "false");
     note.style.width = tilewidth[tileid];
     if(tileid == "0"){
         note.style.display = "none";
@@ -225,11 +226,14 @@ function keyhit(){
         var canhit = (posy >= (445 - notesize)) && (posy <= 450);
         var hit = canhit && button[keybutton[fallingnote[i].getAttribute("keytohit")]]
         // keypress.innerText = canhit && button[keybutton[fallingnote[i].getAttribute("keytohit")]];
-        fallingnote[i].setAttribute("hit", hit);
-        if(hit){
-            score += 10*speed;
-            playsound(fallingnote[i].getAttribute("soundkey"), fallingnote[i].getAttribute("size"))
+        if(fallingnote[i].getAttribute("hit") == "false" && hit){
+            fallingnote[i].setAttribute("hit", hit);
+            playsound(fallingnote[i].getAttribute("soundkey"), fallingnote[i].getAttribute("size"));
+
         }
+        // if(hit){
+        //     score += 10*speed;
+        // }
     }
 }
 
