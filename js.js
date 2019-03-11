@@ -1,5 +1,5 @@
 var button = {};
-var speed = 2;
+var speed = 2.2;
 var keybutton = {"C":"A", "D":"S", "E":"D", "F":"F", "G":"G", "A":"H", "B":"J", "C2":"K", "bC":"W", "bD":"E", "bF":"T", "bA":"Y", "bB":"U"};
 var buttonkey = {"A":"C", "S":"D", "D":"E", "F":"F", "G":"G", "H":"A", "J":"B", "K":"C2", "W":"bC", "E":"bD", "T":"bF", "Y":"bA", "U":"bB"};
 var tilewidth = {"TC":50, "TbC":25, "TD":50, "TbD":25, "TE":50, "TF":50, "TbF":25, "TG":50, "TbA":25, "TA":50, "TbB":25, "TB":50};
@@ -54,20 +54,23 @@ var sound = {
 // var playing = {};
 
 function playsound(soundname, playtime){
-        console.log(soundname);
-        // playing[soundname] = 1;
-        sound[soundname].currentTime = 0;
-        sound[soundname].play();
-        setTimeout(function(){
-            pausesound(soundname);
+    var thesound = document.querySelector(`audio[data-key="` + soundname +`"]`)
+    const playPromise = thesound.play();
+    if (playPromise !== null){
+        thesound.currentTime = 0;
+        playPromise.catch(() => { thesound.play(); })
+    } 
+        // sound[soundname].play();
+    setTimeout(function(){
+        thesound.pause();
             // playing[soundname] = 0;
-        }, playtime*1000/speed/speed);
+    }, playtime*1000/speed/speed);
 }
 
-function pausesound(soundname){
-    sound[soundname].pause();
-    // playing[soundname] = 0;
-}
+// function pausesound(soundname){
+//     sound[soundname].pause();
+//     // playing[soundname] = 0;
+// }
 
 setInterval(function(){
 
