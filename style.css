@@ -1,5 +1,22 @@
-body{background-color:rgb(43, 66, 91);}
+@import url('https://fonts.googleapis.com/css?family=Nova+Flat');
 
+body{    
+    background-color:rgb(43, 66, 91);
+    cursor: url(http://www.rw-designer.com/cursor-view/21658.gif), auto;
+    touch-action: none;
+    background-image: url(images/bg-6.png);
+    display: fixed;
+    text-shadow: 2px 1px 8px black;
+    font-family: 'Nova Flat', cursive;
+}
+h2, h3 {
+    text-align: right;
+    color: red;
+}
+h1 {
+    text-align: center;
+    color : red;
+}
 game{
     margin: 30px auto;
     display:block;
@@ -7,6 +24,7 @@ game{
     width: 300px;
     background-color: #8E84B4;
     position: relative;
+    box-shadow: 5px 0px 100px darkviolet;
 }
 
 blind{
@@ -52,19 +70,34 @@ div.note{
     display:block;
     height: 20px;
     width: 50px;
-    background-color: red;
+    background-color: violet;
     position:absolute;
 }
 
-div.note[size = "0.5"]{height: 10px;}
+div.note[size = "0.5"]{
+    height: 10px;
+    background-color: black;
+}
 
-div.note[size = "1"]{height: 20px;}
+div.note[size = "1"]{
+    height: 20px;
+    background-color: black;
+}
 
-div.note[size = "2"]{height: 40px;}
+div.note[size = "2"]{
+    height: 40px;
+    background-color: black;
+}
 
-div.note[size = "3"]{height: 60px;}
+div.note[size = "3"]{
+    height: 60px;
+    background-color: black;
+}
 
-div.note[size = "4"]{height: 80px;}
+div.note[size = "4"]{
+    height: 80px;
+    background-color: black;
+}
 
 div.note[hit = "true"]{box-shadow: 0px 0px 20px white; background-color: pink;}
 
@@ -78,24 +111,24 @@ tile[keytype = "normal"]{
     display: block;
     height: 450px;
     width: 50px;
-    background-color: rgba(0, 0, 153, 0.2);
+    background-image: linear-gradient(#FEAC5E, #C779D0, #4BC0C8);
     position: absolute;
 }
 tile[status = "miss"]{background-color: rgba(153, 0, 0, 0.2);}
 
-tile[status = "unpress"]{background-color: rgba(0, 0, 153, 0.2);}
+tile[status = "unpress"]{background-image: linear-gradient(#FEAC5E, #C779D0, #4BC0C8);}
 
-tile[keytype = "normal"][status = "onpress"]{background-color: rgba(0, 0, 153, 0.5);}
+tile[keytype = "normal"][status = "onpress"]{background-color: black;}
 
 tile[keytype = "sharp"]{
     display: block;
     height: 450px;
     width: 25px;
-    background-color: rgba(0, 0, 153, 0.2);
+    background-image: linear-gradient(#FEAC5E, #C779D0, #4BC0C8);
     position: absolute;
 }
 
-tile[keytype = "sharp"][status = "onpress"]{background-color: rgba(0, 0, 153, 0.75);}
+tile[keytype = "sharp"][status = "onpress"]{background-color: black;}
 
 tile#TS6{width:13px;}
 
