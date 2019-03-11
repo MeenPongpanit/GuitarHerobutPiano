@@ -63,7 +63,7 @@ function playsound(soundname, playtime){
     } 
         // sound[soundname].play();
     setTimeout(function(){
-        thesound.pause();
+        // thesound.pause();
             // playing[soundname] = 0;
     }, playtime*1000/speed/speed);
 }
@@ -157,7 +157,7 @@ function addnote(tileid, rythm){
     note.setAttribute("y", 300);
     note.setAttribute("size", rythm);
     note.setAttribute("keytohit", tileid.slice(1, tileid.length - 1));
-    note.setAttribute("soundkey", tileid.slice(1, tileid.length));
+    note.setAttribute("soundkey", tileid.slice(1, tileid.length) + "-" + rythm);
     note.setAttribute("hit", "false");
     note.style.width = tilewidth[tileid];
     if(tileid == "0"){
