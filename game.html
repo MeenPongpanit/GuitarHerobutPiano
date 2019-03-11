@@ -4,7 +4,7 @@
     <title>GuitarHeroButPiano</title>
     </head>
 <body>
-    <button onclick="playsound('A')">C sound test</button>
+    <button onclick="playsound('C2')">C sound test</button>
     <p id="accuracy">ACC:</p>
         <game>
             <tile id="TC" keytype="normal" x="0" status="unpress"></tile>
@@ -14,13 +14,11 @@
             <tile id="TG" keytype="normal" x="4" status="unpress"></tile>
             <tile id="TA" keytype="normal" x="5" status="unpress"></tile>
             <tile id="TB" keytype="normal" x="6" status="unpress"></tile>
-            <tile id="TC2" keytype="normal" x="7" status="unpress"></tile>
-            <tile id="TS1" keytype="sharp" x="0.75" status="unpress"></tile>
-            <tile id="TS2" keytype="sharp" x="1.75" status="unpress"></tile>
-            <tile id="TS3" keytype="sharp" x="3.75" status="unpress"></tile>
-            <tile id="TS4" keytype="sharp" x="4.75" status="unpress"></tile>
-            <tile id="TS5" keytype="sharp" x="5.75" status="unpress"></tile>
-            <tile id="TS6" keytype="sharp" x="7.75" status="unpress"></tile>
+            <tile id="TbC" keytype="sharp" x="0.75" status="unpress"></tile>
+            <tile id="TbD" keytype="sharp" x="1.75" status="unpress"></tile>
+            <tile id="TbF" keytype="sharp" x="3.75" status="unpress"></tile>
+            <tile id="TbA" keytype="sharp" x="4.75" status="unpress"></tile>
+            <tile id="TbB" keytype="sharp" x="5.75" status="unpress"></tile>
             <pianokey id="C" x="0" status="unpress"><p>A</p></pianokey>
             <pianokey id="D" x="1" status="unpress"><p>S</p></pianokey>
             <pianokey id="E" x="2" status="unpress"><p>D</p></pianokey>
@@ -28,31 +26,56 @@
             <pianokey id="G" x="4" status="onpress"><p>G</p></pianokey>
             <pianokey id="A" x="5" status="unpress"><p>H</p></pianokey>
             <pianokey id="B" x="6" status="unpress"><p>J</p></pianokey>
-            <pianokey id="C2" x="7" status="unpress"><p>K</p></pianokey>
             <!-- # key -->
-            <sharpkey id="S1" x="0.75" status="unpress"><p>W</p></sharpkey>
-            <sharpkey id="S2" x="1.75" status="unpress"><p>E</p></sharpkey>
-            <sharpkey id="S3" x="3.75" status="unpress"><p>T</p></sharpkey>
-            <sharpkey id="S4" x="4.75" status="unpress"><p>Y</p></sharpkey>
-            <sharpkey id="S5" x="5.75" status="unpress"><p>U</p></sharpkey>
-            <sharpkey id="S6" x="7.75" status="unpress"><p>O</p></sharpkey>
+            <sharpkey id="bC" x="0.75" status="unpress"><p>W</p></sharpkey>
+            <sharpkey id="bD" x="1.75" status="unpress"><p>E</p></sharpkey>
+            <sharpkey id="bF" x="3.75" status="unpress"><p>T</p></sharpkey>
+            <sharpkey id="bA" x="4.75" status="unpress"><p>Y</p></sharpkey>
+            <sharpkey id="bB" x="5.75" status="unpress"><p>U</p></sharpkey>
         </game>
 <!--         <blind></blind> -->
         <h1 id="keypress">keypress:</h1>
-        <audio data-key="A" src="asset/sounduse/C3-4.wav"></audio>
-        <audio data-key="S" src="asset/sounduse/D3-4.wav"></audio>
-        <audio data-key="D" src="asset/sounduse/E3-4.wav"></audio>
-        <audio data-key="F" src="asset/sounduse/F3-4.wav"></audio>
-        <audio data-key="G" src="asset/sounduse/G3-4.wav"></audio>
-        <audio data-key="H" src="asset/sounduse/A3-4.wav"></audio>
-        <audio data-key="J" src="asset/sounduse/B3-4.wav"></audio>
-        <audio data-key="K" src="asset/sounduse/C4-4.wav"></audio>
-        <audio data-key="W" src="asset/sounduse/bC3-4.wav"></audio>
-        <audio data-key="E" src="asset/sounduse/bD3-4.wav"></audio>
-        <audio data-key="T" src="asset/sounduse/bF3-4.wav"></audio>
-        <audio data-key="Y" src="asset/sounduse/bA3-4.wav"></audio>
-        <audio data-key="U" src="asset/sounduse/bB3-4.wav"></audio>
-        <audio data-key="O" src="asset/sounduse/bC4-4.wav"></audio>
+        <audio data-key="C2" src="asset/sounduse/C2-4.wav"></audio>
+        <audio data-key="D2" src="asset/sounduse/D2-4.wav"></audio>
+        <audio data-key="E2" src="asset/sounduse/E2-4.wav"></audio>
+        <audio data-key="F2" src="asset/sounduse/F2-4.wav"></audio>
+        <audio data-key="G2" src="asset/sounduse/G2-4.wav"></audio>
+        <audio data-key="A2" src="asset/sounduse/A2-4.wav"></audio>
+        <audio data-key="B2" src="asset/sounduse/B2-4.wav"></audio>
+        <audio data-key="bC2" src="asset/sounduse/bC2-4.wav"></audio>
+        <audio data-key="bD2" src="asset/sounduse/bD2-4.wav"></audio>
+        <audio data-key="bF2" src="asset/sounduse/bF2-4.wav"></audio>
+        <audio data-key="bA2" src="asset/sounduse/bA2-4.wav"></audio>
+        <audio data-key="bB2" src="asset/sounduse/bB2-4.wav"></audio>
+
+
+        <audio data-key="C3" src="asset/sounduse/C3-4.wav"></audio>
+        <audio data-key="D3" src="asset/sounduse/D3-4.wav"></audio>
+        <audio data-key="E3" src="asset/sounduse/E3-4.wav"></audio>
+        <audio data-key="F3" src="asset/sounduse/F3-4.wav"></audio>
+        <audio data-key="G3" src="asset/sounduse/G3-4.wav"></audio>
+        <audio data-key="A3" src="asset/sounduse/A3-4.wav"></audio>
+        <audio data-key="B3" src="asset/sounduse/B3-4.wav"></audio>
+        <audio data-key="bC3" src="asset/sounduse/bC3-4.wav"></audio>
+        <audio data-key="bD3" src="asset/sounduse/bD3-4.wav"></audio>
+        <audio data-key="bF3" src="asset/sounduse/bF3-4.wav"></audio>
+        <audio data-key="bA3" src="asset/sounduse/bA3-4.wav"></audio>
+        <audio data-key="bB3" src="asset/sounduse/bB3-4.wav"></audio>
+
+        <audio data-key="C4" src="asset/sounduse/C4-4.wav"></audio>
+        <audio data-key="D4" src="asset/sounduse/D4-4.wav"></audio>
+        <audio data-key="E4" src="asset/sounduse/E4-4.wav"></audio>
+        <audio data-key="F4" src="asset/sounduse/F4-4.wav"></audio>
+        <audio data-key="G4" src="asset/sounduse/G4-4.wav"></audio>
+        <audio data-key="A4" src="asset/sounduse/A4-4.wav"></audio>
+        <audio data-key="B4" src="asset/sounduse/B4-4.wav"></audio>
+        <audio data-key="bC4" src="asset/sounduse/bC4-4.wav"></audio>
+        <audio data-key="bD4" src="asset/sounduse/bD4-4.wav"></audio>
+        <audio data-key="bF4" src="asset/sounduse/bF4-4.wav"></audio>
+        <audio data-key="bA4" src="asset/sounduse/bA4-4.wav"></audio>
+        <audio data-key="bB4" src="asset/sounduse/bB4-4.wav"></audio>
+    
+
         <tile id="T0"></tile>
 </body>
 <script src="js.js" charset="UTF-8"></script>
