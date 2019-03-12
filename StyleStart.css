@@ -17,7 +17,11 @@ body {
     font-size: 20px;
     font-family: 'Nova Flat', cursive;
     cursor: pointer;
-    margin: 10px;
+    margin: auto;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
     transition: 0.8s;
     position: relative;
     overflow: hidden; 
