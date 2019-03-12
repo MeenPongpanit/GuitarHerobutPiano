@@ -31,10 +31,10 @@ game{
     margin: 30px auto;
     display:block;
     height: 600px;
-    width: 300px;
-    background-color: #8E84B4;
+    width: 352px;
     position: relative;
     box-shadow: 5px 0px 100px darkviolet;
+    background-image: linear-gradient(#FEAC5E, #C779D0, #4BC0C8);
 }
 
 blind{
@@ -121,24 +121,24 @@ tile[keytype = "normal"]{
     display: block;
     height: 450px;
     width: 50px;
-    background-image: linear-gradient(#FEAC5E, #C779D0, #4BC0C8);
+
     position: absolute;
 }
-tile[status = "miss"]{background-color: rgba(153, 0, 0, 0.2);}
+/* tile[status = "miss"]{background-color: rgba(153, 0, 0, 0.2);}
 
-tile[status = "unpress"]{background-image: linear-gradient(#FEAC5E, #C779D0, #4BC0C8);}
-
-tile[keytype = "normal"][status = "onpress"]{background-color: black;}
+tile[status = "unpress"]{background-image: linear-gradient(#FEAC5E, #C779D0, #4BC0C8);} */
+/* 
+tile[keytype = "normal"][status = "onpress"]{background-color: black;} */
 
 tile[keytype = "sharp"]{
     display: block;
     height: 450px;
     width: 25px;
-    background-image: linear-gradient(#FEAC5E, #C779D0, #4BC0C8);
+    /* background-image: linear-gradient(#FEAC5E, #C779D0, #4BC0C8); */
     position: absolute;
 }
 
-tile[keytype = "sharp"][status = "onpress"]{background-color: black;}
+tile[keytype = "sharp"]>div.note{width:25px;}
 
 tile#TS6{width:13px;}
 

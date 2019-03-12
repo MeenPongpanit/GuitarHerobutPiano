@@ -1,5 +1,5 @@
 var button = {};
-var speed = 2.2;
+var speed = 2;
 var keybutton = {"C":"A", "D":"S", "E":"D", "F":"F", "G":"G", "A":"H", "B":"J", "C2":"K", "bC":"W", "bD":"E", "bF":"T", "bA":"Y", "bB":"U"};
 var buttonkey = {"A":"C", "S":"D", "D":"E", "F":"F", "G":"G", "H":"A", "J":"B", "K":"C2", "W":"bC", "E":"bD", "T":"bF", "Y":"bA", "U":"bB"};
 var tilewidth = {"TC":50, "TbC":25, "TD":50, "TbD":25, "TE":50, "TF":50, "TbF":25, "TG":50, "TbA":25, "TA":50, "TbB":25, "TB":50};
@@ -9,47 +9,7 @@ var presscount = 0;
 var notedowned = 0;
 var miss = 0;
 //pull audio element to play.
-var sound = {
-    "C2":document.querySelector(`audio[data-key="C2"]`),
-    "D2":document.querySelector(`audio[data-key="D2"]`),
-    "E2":document.querySelector(`audio[data-key="E2"]`),
-    "F2":document.querySelector(`audio[data-key="F2"]`),
-    "G2":document.querySelector(`audio[data-key="G2"]`),
-    "A2":document.querySelector(`audio[data-key="A2"]`),
-    "B2":document.querySelector(`audio[data-key="B2"]`),
-    "bC2":document.querySelector(`audio[data-key="bC2"]`),
-    "bD2":document.querySelector(`audio[data-key="bD2"]`),
-    "bF2":document.querySelector(`audio[data-key="bF2"]`),
-    "bA2":document.querySelector(`audio[data-key="bA2"]`),
-    "bB2":document.querySelector(`audio[data-key="bB2"]`),
 
-    "C3":document.querySelector(`audio[data-key="C3"]`),
-    "D3":document.querySelector(`audio[data-key="D3"]`),
-    "E3":document.querySelector(`audio[data-key="E3"]`),
-    "F3":document.querySelector(`audio[data-key="F3"]`),
-    "G3":document.querySelector(`audio[data-key="G3"]`),
-    "A3":document.querySelector(`audio[data-key="A3"]`),
-    "B3":document.querySelector(`audio[data-key="B3"]`),
-    "bC3":document.querySelector(`audio[data-key="bC3"]`),
-    "bD3":document.querySelector(`audio[data-key="bD3"]`),
-    "bF3":document.querySelector(`audio[data-key="bF3"]`),
-    "bA3":document.querySelector(`audio[data-key="bA3"]`),
-    "bB3":document.querySelector(`audio[data-key="bB3"]`),
-
-    "C4":document.querySelector(`audio[data-key="C4"]`),
-    "D4":document.querySelector(`audio[data-key="D4"]`),
-    "E4":document.querySelector(`audio[data-key="E4"]`),
-    "F4":document.querySelector(`audio[data-key="F4"]`),
-    "G4":document.querySelector(`audio[data-key="G4"]`),
-    "A4":document.querySelector(`audio[data-key="A4"]`),
-    "B4":document.querySelector(`audio[data-key="B4"]`),
-    "bC4":document.querySelector(`audio[data-key="bC4"]`),
-    "bD4":document.querySelector(`audio[data-key="bD4"]`),
-    "bF4":document.querySelector(`audio[data-key="bF4"]`),
-    "bA4":document.querySelector(`audio[data-key="bA4"]`),
-    "bB4":document.querySelector(`audio[data-key="bB4"]`)
-
-};
 //contain playing note.
 // var playing = {};
 
@@ -169,7 +129,7 @@ function addnote(tileid, rythm){
     notedowned += 1;
 }
 
-var song = [["C3", 4], ["D3", 2], ["E3", 2], ["E3", 1], ["E3", 2], ["E3", 3], ["0", 1], ["D3", 2], ["C3", 2], ["D3", 2], ["G3", 2], ["G3", 1], ["G3", 3]];
+var song = [["bC3", 4], ["D3", 2], ["E3", 2], ["E3", 1], ["E3", 2], ["E3", 3], ["0", 1], ["D3", 2], ["C3", 2], ["D3", 2], ["G3", 2], ["G3", 1], ["G3", 3]];
 // ["0", 2], ["C", 2], ["D", 2], ["E", 3], ["E", 2],  ["E", 2], ["0", 1], ["D", 2], ["C", 2], ["D", 2], ["G", 2], ["G", 1], ["G", 3],
 // ["0", 2], ["D", 2], ["E", 2], ["D", 3], ["C", 2], ["C", 4], ["D", 2], ["C", 3], ["G", 2], ["F", 4],
 // ["0", 1], ["D", 2], ["E", 1], ["D", 1], ["C", 2], ["C", 2], ["D", 1], ["E", 2], ["D", 4],
@@ -188,14 +148,17 @@ var song = [["C3", 4], ["D3", 2], ["E3", 2], ["E3", 1], ["E3", 2], ["E3", 3], ["
 // ["0", 4], ["0", 4], ["E", 2], ["F", 2], ["E", 2], ["D", 2], ["C", 2], ["C", 2], ["D", 2], ["C", 4]
 
 var songtime = 0;
-for(let i = 0 ; i <= song.length - 1 ; i++){
-    songtime += song[i][1]*(i != 0) + 0.4;
-    setTimeout(function(){
-        if(song[i][0] != "0"){
-            addnote("T" + song[i][0], song[i][1]);
-        }
-    }, songtime*1000/Math.pow(speed, 2));
+function playsong(){
+    for(let i = 0 ; i <= song.length - 1 ; i++){
+        songtime += song[i][1]*(i != 0) + 0.05;
+        setTimeout(function(){
+            if(song[i][0] != "0"){
+                addnote("T" + song[i][0], song[i][1]);
+            }
+        }, songtime*1000/Math.pow(speed, 2));
+    }
 }
+playsong();
 
 function falldownnote(noteid){
         var note = fallingnote[noteid];
