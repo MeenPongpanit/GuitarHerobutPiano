@@ -12,13 +12,13 @@ h1{
 }
 .entertain {
     text-align: center;
-    margin-top: 360px;
+
 }
 
 .beauty {
     border: 1px solid #3498db;
     background: none;
-    padding: 10px 20px;
+    padding: 40px 80px;
     font-size: 20px;
     font-family: 'Nova Flat', cursive;
     cursor: pointer;
@@ -75,4 +75,7 @@ h1{
 
 .b3:hover::before,.b4:hover::before {
     height: 0%
+}
+.diff{
+    text-align: center;
 }

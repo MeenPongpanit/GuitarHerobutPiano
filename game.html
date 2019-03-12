@@ -1,11 +1,15 @@
 <hmtl>
+
     <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <title>GuitarHeroButPiano</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>GuitarHeroButPiano</title>
     </head>
-<body>
-    <button onclick="playsound('C2', 1)">C sound test</button>
-    <p id="accuracy">ACC:</p>
+
+    <body>
+        <div class="menu">score</div>
+        <form action=""></form>
+        <button onclick="playsound('C2', 1)">C sound test</button>
+        <p id="accuracy">ACC:</p>
         <game>
             <tile id="TC" keytype="normal" x="0" status="unpress"></tile>
             <tile id="TD" keytype="normal" x="1" status="unpress"></tile>
@@ -19,21 +23,45 @@
             <tile id="TbF" keytype="sharp" x="3.75" status="unpress"></tile>
             <tile id="TbA" keytype="sharp" x="4.75" status="unpress"></tile>
             <tile id="TbB" keytype="sharp" x="5.75" status="unpress"></tile>
-            <pianokey id="C" x="0" status="unpress"><p>A</p></pianokey>
-            <pianokey id="D" x="1" status="unpress"><p>S</p></pianokey>
-            <pianokey id="E" x="2" status="unpress"><p>D</p></pianokey>
-            <pianokey id="F" x="3" status="unpress"><p>F</p></pianokey>
-            <pianokey id="G" x="4" status="onpress"><p>G</p></pianokey>
-            <pianokey id="A" x="5" status="unpress"><p>H</p></pianokey>
-            <pianokey id="B" x="6" status="unpress"><p>J</p></pianokey>
+            <pianokey id="C" x="0" status="unpress">
+                <p>A</p>
+            </pianokey>
+            <pianokey id="D" x="1" status="unpress">
+                <p>S</p>
+            </pianokey>
+            <pianokey id="E" x="2" status="unpress">
+                <p>D</p>
+            </pianokey>
+            <pianokey id="F" x="3" status="unpress">
+                <p>F</p>
+            </pianokey>
+            <pianokey id="G" x="4" status="onpress">
+                <p>G</p>
+            </pianokey>
+            <pianokey id="A" x="5" status="unpress">
+                <p>H</p>
+            </pianokey>
+            <pianokey id="B" x="6" status="unpress">
+                <p>J</p>
+            </pianokey>
             <!-- # key -->
-            <sharpkey id="bC" x="0.75" status="unpress"><p>W</p></sharpkey>
-            <sharpkey id="bD" x="1.75" status="unpress"><p>E</p></sharpkey>
-            <sharpkey id="bF" x="3.75" status="unpress"><p>T</p></sharpkey>
-            <sharpkey id="bA" x="4.75" status="unpress"><p>Y</p></sharpkey>
-            <sharpkey id="bB" x="5.75" status="unpress"><p>U</p></sharpkey>
+            <sharpkey id="bC" x="0.75" status="unpress">
+                <p>W</p>
+            </sharpkey>
+            <sharpkey id="bD" x="1.75" status="unpress">
+                <p>E</p>
+            </sharpkey>
+            <sharpkey id="bF" x="3.75" status="unpress">
+                <p>T</p>
+            </sharpkey>
+            <sharpkey id="bA" x="4.75" status="unpress">
+                <p>Y</p>
+            </sharpkey>
+            <sharpkey id="bB" x="5.75" status="unpress">
+                <p>U</p>
+            </sharpkey>
         </game>
-<!--         <blind></blind> -->
+        <!--         <blind></blind> -->
         <h1 id="keypress">keypress:</h1>
         <audio data-key="C2-4" src="asset/sounduse/C2-4.wav"></audio>
         <audio data-key="D2-4" src="asset/sounduse/D2-4.wav"></audio>
@@ -116,7 +144,7 @@
         <audio data-key="bF4-3" src="asset/sounduse/bF4-3.wav"></audio>
         <audio data-key="bA4-3" src="asset/sounduse/bA4-3.wav"></audio>
         <audio data-key="bB4-3" src="asset/sounduse/bB4-3.wav"></audio>
-        
+
         <!-- 2 -->
         <audio data-key="C2-2" src="asset/sounduse/C2-2.wav"></audio>
         <audio data-key="D2-2" src="asset/sounduse/D2-2.wav"></audio>
@@ -201,6 +229,6 @@
 
 
         <tile id="T0"></tile>
-</body>
-<script src="js.js" charset="UTF-8"></script>
+    </body>
+    <script src="js.js" charset="UTF-8"></script>
 </hmtl>
