@@ -129,7 +129,7 @@ function addnote(tileid, rythm){
     notedowned += 1;
 }
 
-var song = [["C3", 4], ["D3", 2], ["E3", 2], ["E3", 1], ["E3", 2], ["E3", 3], ["0", 1], ["D3", 2], ["C3", 2], ["D3", 2], ["G3", 2], ["G3", 1], ["G3", 3]];
+var song = [["bC3", 4], ["D3", 2], ["E3", 2], ["E3", 1], ["E3", 2], ["E3", 3], ["0", 1], ["D3", 2], ["C3", 2], ["D3", 2], ["G3", 2], ["G3", 1], ["G3", 3]];
 // ["0", 2], ["C", 2], ["D", 2], ["E", 3], ["E", 2],  ["E", 2], ["0", 1], ["D", 2], ["C", 2], ["D", 2], ["G", 2], ["G", 1], ["G", 3],
 // ["0", 2], ["D", 2], ["E", 2], ["D", 3], ["C", 2], ["C", 4], ["D", 2], ["C", 3], ["G", 2], ["F", 4],
 // ["0", 1], ["D", 2], ["E", 1], ["D", 1], ["C", 2], ["C", 2], ["D", 1], ["E", 2], ["D", 4],
@@ -148,14 +148,17 @@ var song = [["C3", 4], ["D3", 2], ["E3", 2], ["E3", 1], ["E3", 2], ["E3", 3], ["
 // ["0", 4], ["0", 4], ["E", 2], ["F", 2], ["E", 2], ["D", 2], ["C", 2], ["C", 2], ["D", 2], ["C", 4]
 
 var songtime = 0;
-for(let i = 0 ; i <= song.length - 1 ; i++){
-    songtime += song[i][1]*(i != 0) + 0.4;
-    setTimeout(function(){
-        if(song[i][0] != "0"){
-            addnote("T" + song[i][0], song[i][1]);
-        }
-    }, songtime*1000/Math.pow(speed, 2));
+function playsong(){
+    for(let i = 0 ; i <= song.length - 1 ; i++){
+        songtime += song[i][1]*(i != 0) + 0.05;
+        setTimeout(function(){
+            if(song[i][0] != "0"){
+                addnote("T" + song[i][0], song[i][1]);
+            }
+        }, songtime*1000/Math.pow(speed, 2));
+    }
 }
+playsong();
 
 function falldownnote(noteid){
         var note = fallingnote[noteid];
