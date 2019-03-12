@@ -31,8 +31,11 @@ h1{
 }
 
 .b1,.b2{
-    color: #3498db;
-    background-image: url(images/)
+    color: red;
+    background-image: url(images/bad_apple.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position : center; 
 }
 
 .b3,.b4{
