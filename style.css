@@ -110,6 +110,17 @@ sharpkey[status = "onpress"]{background-color: #404040;}
 
 sharpkey>p{color:white;}
 
+div#statdisplay{
+    display: block;
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 200px;
+    width: 400px;
+    position: absolute;
+    top: 20vh;
+    left: 70vw;
+}
+
+
 div.note{
     border: 1px solid white;
     display:block;
