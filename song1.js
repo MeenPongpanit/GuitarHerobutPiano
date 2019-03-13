@@ -182,6 +182,7 @@ setInterval(function(){
     keyhit();
     accuracy.innerText = "Accuracy : " + ((notedowned - miss)/notedowned*100).toString().slice(0, 5) + "%";
     Thescore.innerText = score*100;
+    Thecombo.innerText = "Combo : " + combo;
 }, 50/speed)
 
 // setInterval(function(){
