@@ -6,6 +6,12 @@
     </head>
 
     <body>
+        <div id="statdisplay">
+            <h1 id="text">Score</h1>
+            <h1 id="score">00000</h1>
+            <p id="accuracy">ACC :</p>
+            <p id="accuracy">COMBO :</p>
+        </div>
         <div class="dropdown">
             <button>Menu</button>
             <div>
@@ -66,11 +72,13 @@
                 <p>U</p>
             </sharpkey>
         </game>
-        
-        <div id="statdisplay">
-        <h1 id="score">keypress:</h1>
-        <p id="accuracy">ACC:</p>
+        <div class="progress-bar">
+            <div class="header" id="progress-header1"></div>
+            <div class="header" id="progress-header2"></div>
+            <div class="progress" id="progress"></div>
         </div>
+
+
 
         <audio data-key="C2-4" src="asset/sounduse/C2-4.wav"></audio>
         <audio data-key="D2-4" src="asset/sounduse/D2-4.wav"></audio>
