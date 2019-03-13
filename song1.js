@@ -41,31 +41,6 @@ setInterval(function(){
 document.onkeydown = document.onkeyup = function(e){
     var key_code = String.fromCharCode(e.keyCode);
     button[key_code] = e.type == "keydown";
-    for(i in button){
-        if(button[i]){
-            var tileid = document.getElementById("T" + buttonkey[key_code]);
-            if(buttonuse.includes(key_code))
-            if(tileid.hasChildNodes()){
-                var firstnode = tileid.firstChild;
-                var posy = firstnode.getAttribute("y");
-                var notesize = Number(firstnode.getAttribute("size"))*20;
-                var canhit = (posy >= (450 - notesize)) && (posy <= 450);
-                if(!canhit){
-                    updatekeyart("T" + buttonkey[key_code], "miss");
-                    miss += 1;
-                }
-            }
-            else{
-                miss += 1;
-            }
-        }
-    }
-    // if(e.type == "keyup" && buttonuse.includes(key_code)){
-    //     pausesound(key_code);
-    // }
-    // if(e.type == "keydown" && buttonuse.includes(key_code)){
-    //     playsound(key_code);
-    // }
     presscount += e.type == "keyup";
     // keypress.innerText = pressing;
     pressing = "";
@@ -177,6 +152,8 @@ function falldownnote(noteid){
 
 function delunbound(noteid){
     var note = fallingnote[noteid];
+    miss += note.getAttribute("hit") == "false";
+    score += note.getAttribute("hit") == "true";
     note.parentNode.removeChild(note)
     fallingnote.splice(noteid, 1);
 
@@ -217,7 +194,7 @@ setInterval(function(){
     }
 }
     keyhit();
-    // keypress.innerText = JSON.stringify(playing);
+    keypress.innerText = "Miss : " + miss;
     accuracy.innerText = score;
 }, 50/speed)
 
