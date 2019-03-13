@@ -108,6 +108,24 @@ var song = [["F3", 1], ["D3", 1], ["A2", 1], ["F3", 1], ["D3", 1], ["A2", 1], ["
 
 var songtime = 0; //นับเวลาว่าปัจจุบันเพลงกี่วินาทีแล้วฃ
 //Function เล่นเพลง จะปล่อยโน๊ตแต่ละตัวตามลำดับไล่ลงมา
+
+function countdown(){
+    
+    var cd = 3;
+    for(let i = 1 ; i <= 4 ; i++){
+        setTimeout(function(){
+            console.log(cd);
+            cd --;
+            Thecountdownnum.innerText = cd + "s";
+            if(i == 4){
+                Thecountdown.style.display = "none";
+                playsong();
+            }
+        }, i*1000);
+    }
+}
+countdown();
+
 function playsong(){
     for(let i = 0 ; i <= song.length - 1 ; i++){
         songtime += song[i][1]*(i != 0) + 0.05;
@@ -118,7 +136,7 @@ function playsong(){
         }, songtime*1000/Math.pow(speed, 2)); //ต้อง ^2 เพราะ speed ในการปล่อยเร็วขึ้น n เท่า และ speed ในการตกก็เร็วขึ้น n เท่า (n^2)
     }
 }
-playsong(); //เรียกใช้ฟังก์ชั่น ให้มันปล๋อยโน๊ตตกลงมาก
+// playsong(); //เรียกใช้ฟังก์ชั่น ให้มันปล๋อยโน๊ตตกลงมาก
 
 //Function ทำให้โน๊ตทุกตัวตกลงมาเรื่อยๆ
 function falldownnote(noteid){
