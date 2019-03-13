@@ -11,6 +11,7 @@ var buttonuse = ["A", "S", "D", "F", "G", "H", "J", "W", "E", "T", "Y", "U"]; //
 var presscount = 0; //นับจำนวนครั้งที่ยกนิ้วออกจากปุ่ม (ยังไม่ได้ใช้)
 var notedowned = 1; //จำนวนโน๊ตที่ตกลงมาแล้ว
 var miss = 0; //จำนวนโน๊ตที่ไม่โดนกด และ ตกขอบจอหายไปแล้ว
+var combo = 0; //นับคอมโบ
 
 //เล่นเสียงโน๊ตต่างๆ
 function playsound(soundname, playtime){
@@ -131,8 +132,14 @@ function falldownnote(noteid){
 //Function ลบ Note ที่ตกลงมาจนเลยขอบไปแล้ว
 function delunbound(noteid){
     var note = fallingnote[noteid];
-    miss += note.getAttribute("hit") == "false"; //หาก note ไม่ถูกกด miss + 1
-    score += note.getAttribute("hit") == "true"; //หาก note ถูกกด score + 1
+    if(note.getAttribute("hit") == "false"){
+        miss += 1; //หาก note ไม่ถูกกด miss + 1
+        combo = 0
+    }
+    if(note.getAttribute("hit") == "true"){
+        score += 1; //หาก note ถูกกด score + 1
+        combo += 1;
+    }
     note.parentNode.removeChild(note)  //เอาโน๊ตออกจาก tile
     fallingnote.splice(noteid, 1);
     notedowned += 1; //นับว่าโน๊ตตกลงมาเพิ่มแล้วอีก 1 ตัว
