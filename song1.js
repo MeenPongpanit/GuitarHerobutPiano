@@ -9,7 +9,7 @@ var tilewidth = {"TC":50, "TbC":25, "TD":50, "TbD":25, "TE":50, "TF":50, "TbF":2
 var score = 0;//คะแนน
 var buttonuse = ["A", "S", "D", "F", "G", "H", "J", "W", "E", "T", "Y", "U"]; //ปุ่มที่ใช้
 var presscount = 0; //นับจำนวนครั้งที่ยกนิ้วออกจากปุ่ม (ยังไม่ได้ใช้)
-var notedowned = 0; //จำนวนโน๊ตที่ตกลงมาแล้ว
+var notedowned = 1; //จำนวนโน๊ตที่ตกลงมาแล้ว
 var miss = 0; //จำนวนโน๊ตที่ไม่โดนกด และ ตกขอบจอหายไปแล้ว
 
 //เล่นเสียงโน๊ตต่างๆ
@@ -95,7 +95,6 @@ function addnote(tileid, rythm){
     fallingnote.push(note); //นำ element นี้ใส่ใน fallingnote array
     tile = document.getElementById(tileid.slice(0, tileid.length - 1)); //get Element ของ tile ที่ note จะไปอยู่
     tile.appendChild(note); //ปล่อยโน๊ตลงไปใน Tile นั้น
-    notedowned += 1; //นับว่าโน๊ตตกลงมาเพิ่มแล้วอีก 1 ตัว
 }
 //เพลง เป็น array formatคือ ["ชื่อโน๊ต", "จำนวนจังหวะ"]
 var song = [["F3", 1], ["D3", 1], ["A2", 1], ["F3", 1], ["D3", 1], ["A2", 1], ["F3", 1], ["D3", 1], ["A2", 1], ["F3", 1], ["D3", 1], ["A2", 1], ["E3", 2], ["E3", 2], ["E3", 2],
@@ -136,6 +135,7 @@ function delunbound(noteid){
     score += note.getAttribute("hit") == "true"; //หาก note ถูกกด score + 1
     note.parentNode.removeChild(note)  //เอาโน๊ตออกจาก tile
     fallingnote.splice(noteid, 1);
+    notedowned += 1; //นับว่าโน๊ตตกลงมาเพิ่มแล้วอีก 1 ตัว
 }
 
 //ฟังก์ชันเช็คว่า Note ที่ตกลงมาเลยขอบรึยัง
@@ -170,9 +170,11 @@ setInterval(function(){
         }
     }
 }
+    progress.style.width = notedowned/song.length*100 + "%";
+    pacman.style.left = notedowned/song.length*100 + "%";
     keyhit();
-    score.innerText = "Miss : " + miss;
-    accuracy.innerText = score;
+    accuracy.innerText = "Accuracy : " + ((notedowned - miss)/notedowned*100).toString().slice(0, 5) + "%";
+    Thescore.innerText = score*100;
 }, 50/speed)
 
 // setInterval(function(){

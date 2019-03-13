@@ -195,7 +195,7 @@ p{
     margin-left: 30%;
     
 }
-h1#score{
+h1#Thescore{
     color: rgb(51, 255, 51); 
     
 }
@@ -221,18 +221,24 @@ p#accuracy{
 * {
     box-sizing: border-box;
 }
+#pacman{
+ position:relative;   
+}
+
 .progress-bar{
-    width: 506px;
-    height: 26px;
-    background-color: none;
+    position:absolute;
+    /* left: 20vw; */
+    width: 50vw;
+    height: 15px;
+    /* background-color: yellow; */
     border-radius: 13px;
     padding: 3px;
-    margin: 50px auto;
+    margin: 0px auto;
 
 }
 .progress{
     width: 20px;
-    height: 20px;
+    height: 15px;
     border-radius: 10px;
     background-image: url(images/pacman.png);
     background-size: contain;
