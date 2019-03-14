@@ -12,6 +12,7 @@ var presscount = 0; //นับจำนวนครั้งที่ยกน�
 var notedowned = 0; //จำนวนโน๊ตที่ตกลงมาแล้ว
 var miss = 0; //จำนวนโน๊ตที่ไม่โดนกด และ ตกขอบจอหายไปแล้ว
 var combo = 0; //นับคอมโบ
+var maxcombo = 0;
 
 //เล่นเสียงโน๊ตต่างๆ
 function playsound(soundname, vol){
@@ -146,7 +147,8 @@ var cordsong = [["D0", 4], ["0", 2], ["A0", 3], ["D1", 3], ["0", 1], ["E0", 3], 
 var cordtime = 0;
 
 function countdown(cd){
-    
+    Thecountdowntext.style.display = "none";
+    Thecountdownnum.style.visibility = "visible";   
     for(let i = 1 ; i <= 4 ; i++){
         setTimeout(function(){
             console.log(cd);
@@ -185,6 +187,14 @@ function playsong(){
             if(song[i][0] != "0"){
                 addnote("T" + song[i][0], song[i][1]);
             }
+            if(i == song.length - 1){
+                setTimeout(function(){
+                    model.style.visibility = "visible";
+                    sumscore.innerText = score;
+                    resultacc.innerText = "Accuracy : " + ((notedowned - miss)/notedowned*100).toString().slice(0, 5) + "%";
+                    Mcombo.innerText = "Max Combo : " + maxcombo;
+                }, 5400)
+            }
         }, songtime*1000/Math.pow(speed, 2)); //ต้อง ^2 เพราะ speed ในการปล่อยเร็วขึ้น n เท่า และ speed ในการตกก็เร็วขึ้น n เท่า (n^2)
     }
 }
@@ -209,6 +219,9 @@ function delunbound(noteid){
     if(note.getAttribute("hit") == "true"){
         combo += 1;
         score += 100 + combo*10; //หาก note ถูกกด score + 1
+    }
+    if(combo > maxcombo){
+        maxcombo = combo;
     }
     note.parentNode.removeChild(note)  //เอาโน๊ตออกจาก tile
     fallingnote.splice(noteid, 1);
