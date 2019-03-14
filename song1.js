@@ -9,13 +9,14 @@ var tilewidth = {"TC":50, "TbC":25, "TD":50, "TbD":25, "TE":50, "TF":50, "TbF":2
 var score = 0;//คะแนน
 var buttonuse = ["A", "S", "D", "F", "G", "H", "J", "W", "E", "T", "Y", "U"]; //ปุ่มที่ใช้
 var presscount = 0; //นับจำนวนครั้งที่ยกนิ้วออกจากปุ่ม (ยังไม่ได้ใช้)
-var notedowned = 1; //จำนวนโน๊ตที่ตกลงมาแล้ว
+var notedowned = 0; //จำนวนโน๊ตที่ตกลงมาแล้ว
 var miss = 0; //จำนวนโน๊ตที่ไม่โดนกด และ ตกขอบจอหายไปแล้ว
 var combo = 0; //นับคอมโบ
 
 //เล่นเสียงโน๊ตต่างๆ
-function playsound(soundname, playtime){
+function playsound(soundname, vol){
     var thesound = document.querySelector(`audio[data-key="` + soundname +`"]`); //query element เสียงที่ต้องการจาก html
+    thesound.volume = vol;
     thesound.pause(); //หยุดเล่นเสียงนั้น (กรณีที่เสียงถูกเล่นก่อนหน้า)
     const playPromise = thesound.play(); //เล่นเสียง
     if (playPromise !== null){
@@ -122,10 +123,30 @@ var song = [["F3", 1], ["D3", 1], ["A2", 1], ["F3", 1], ["D3", 1], ["A2", 1], ["
 
 var songtime = 0; //นับเวลาว่าปัจจุบันเพลงกี่วินาทีแล้วฃ
 //Function เล่นเพลง จะปล่อยโน๊ตแต่ละตัวตามลำดับไล่ลงมา
+var cordsong = [["D0", 4], ["0", 2], ["A0", 3], ["D1", 3], ["0", 1], ["E0", 3], ["E0", 3],
+["D0", 4], ["0", 2], ["A0", 3], ["D1", 3],["0", 1], ["G0", 3], ["G0", 3],
+["D0", 4], ["0", 2], ["A0", 3], ["D1", 3],["0", 1], ["E0", 3], ["E0", 3], 
+["D0", 4], ["0", 2], ["A0", 3], ["D1", 3],["0", 1], ["G0", 3], ["G0", 3],
+["D0", 4], ["0", 2], ["A0", 3], ["D1", 3],["E0", 3], ["E0", 3],
+["D0", 4], ["0", 2], ["A0", 3], ["D1", 3],["0", 1],  ["G0", 3], ["G0", 3],
+["0", 4], ["0", 4],
+["D1", 4], ["bC1", 4], ["E1", 4], ["bD1", 4], ["D1", 2], ["D1", 2], ["bC1", 2], ["bC1", 2], ["E1", 2], ["E1", 2], ["bD1", 2], ["bD1", 2],
+["D1", 2], ["D1", 2], ["bC1", 2], ["bC1", 2], ["E1", 2], ["E1", 2], ["bD1", 2], ["bD1", 2], ["D1", 2], ["D1", 2], ["bC1", 2], ["bC1", 2], ["E1", 2], ["E1", 2], ["bD1", 2], ["bD1", 2],
+["0", 4], ["0", 4],
 
-function countdown(){
+
+["A0", 4], ["A0", 4], ["D1", 4], ["B0", 4], ["bB0", 4], ["C1", 4], ["D1", 2], ["D1", 2], ["D1", 2], ["D1", 2],
+["A0", 4], ["A0", 4], ["D1", 4], ["B0", 4], ["bB0", 4], ["C1", 4], ["D1", 2], ["D1", 2], ["D1", 2], ["D1", 2],
+["A0", 2], ["A0", 2], ["C1", 2], ["C1", 2], ["D1", 2], ["D1", 2], ["B0", 2], ["B0", 2], ["A0", 2], ["A0", 2], ["C1", 3], ["C1", 2], ["A0", 3], ["D0", 2],
+
+["A0", 4], ["A0", 4], ["D1", 4], ["B0", 4], ["bB0", 4], ["C1", 4], ["D1", 2], ["D1", 2], ["D1", 2], ["D1", 2],
+["A0", 2], ["A0", 2], ["C1", 2], ["C1", 2], ["D1", 2], ["D1", 2], ["B0", 2], ["B0", 2], ["A0", 2], ["A0", 2], ["C1", 3], ["C1", 2], ["A0", 3], ["D0", 2]];
+
+
+var cordtime = 0;
+
+function countdown(cd){
     
-    var cd = 3;
     for(let i = 1 ; i <= 4 ; i++){
         setTimeout(function(){
             console.log(cd);
@@ -134,11 +155,28 @@ function countdown(){
             if(i == 4){
                 Thecountdown.style.display = "none";
                 playsong();
+                setTimeout(function(){
+                    playcord();
+                }, 5400);
             }
         }, i*1000);
     }
 }
-countdown();
+
+
+
+function playcord(){
+    for(let i = 0 ; i <= cordsong.length - 1 ; i++){
+        cordtime += cordsong[i][1]*(i != 0) + 0.05;
+        setTimeout(function(){
+            if(cordsong[i][0] != "0"){
+                console.log(cordsong[i][0]);
+                playsound(cordsong[i][0] + "-" + cordsong[i][1], 0.4);
+            }
+        }, cordtime*1000/Math.pow(speed, 2));
+    }
+}
+
 
 function playsong(){
     for(let i = 0 ; i <= song.length - 1 ; i++){
@@ -169,12 +207,13 @@ function delunbound(noteid){
         combo = 0
     }
     if(note.getAttribute("hit") == "true"){
-        score += 1; //หาก note ถูกกด score + 1
         combo += 1;
+        score += 100 + combo*10; //หาก note ถูกกด score + 1
     }
     note.parentNode.removeChild(note)  //เอาโน๊ตออกจาก tile
     fallingnote.splice(noteid, 1);
     notedowned += 1; //นับว่าโน๊ตตกลงมาเพิ่มแล้วอีก 1 ตัว
+    accuracy.innerText = "Accuracy : " + ((notedowned - miss)/notedowned*100).toString().slice(0, 5) + "%";
 }
 
 //ฟังก์ชันเช็คว่า Note ที่ตกลงมาเลยขอบรึยัง
@@ -193,7 +232,7 @@ function keyhit(){
         var hit = canhit && button[keybutton[fallingnote[i].getAttribute("keytohit")]] //เช็คว่ากดโดนมั้ยจากตำแหน่ง y
         if(fallingnote[i].getAttribute("hit") == "false" && hit){ //ถ้ายังไม่โดนกด และ กดโดน
             fallingnote[i].setAttribute("hit", hit);
-            playsound(fallingnote[i].getAttribute("soundkey"), fallingnote[i].getAttribute("size")); //เล่นเสียง
+            playsound(fallingnote[i].getAttribute("soundkey"), 1); //เล่นเสียง
         }
     }
 }
@@ -212,8 +251,7 @@ setInterval(function(){
     progress.style.width = notedowned/song.length*100 + "%";
     pacman.style.left = notedowned/song.length*100 + "%";
     keyhit();
-    accuracy.innerText = "Accuracy : " + ((notedowned - miss)/notedowned*100).toString().slice(0, 5) + "%";
-    Thescore.innerText = score*100;
+    Thescore.innerText = score;
     Thecombo.innerText = "Combo : " + combo;
 }, 50/speed)
 
