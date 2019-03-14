@@ -14,17 +14,17 @@
     position: absolute;
     top: 30%;
     left: 15%;
-    color:rgb(43, 214, 137);
+    color:#d18700;
 }
 #Thecountdowntext:hover{
-    color: rgb(124, 249, 14);
+    color: orange;
 }
 #Thecountdownnum{
     position: absolute;
     visibility: hidden;
     top: 34%;
     left: 39%;
-    color: rgb(45, 240, 61);
+    color: orange;
 
 }
 
@@ -32,10 +32,11 @@ body{
     background-color:rgb(43, 66, 91);
     cursor: url(http://www.rw-designer.com/cursor-view/21658.gif), auto;
     touch-action: none;
-    background-image: url(images/bg-6.png);
+    background-image: url(images/bg-6.jpg);
     display: fixed;
     text-shadow: 2px 1px 8px black;
     font-family: 'Nova Flat', cursive;
+    background-size: cover;
 }
 .dropdown {
     display: inline-block;
@@ -96,8 +97,8 @@ game{
     height: 600px;
     width: 352px;
     position: relative;
-    box-shadow: 5px 0px 100px darkviolet;
-    background-image: linear-gradient(#FEAC5E, #C779D0, #4BC0C8);
+    box-shadow: 5px 0px 100px #c783e4;
+    background-color: #313172;
 }
 
 blind{
@@ -141,7 +142,7 @@ sharpkey>p{color:white;}
 div#statdisplay{
     display: block;
     background-color: rgba(255, 255, 255, 0.5);
-    height: 230px;
+    height: 235px;
     width: 400px;
     position: absolute;
     top: 20vh;
@@ -162,30 +163,30 @@ div.note{
 
 div.note[size = "0.5"]{
     height: 10px;
-    background-color: black;
+    background-color: #0080ff;
 }
 
 div.note[size = "1"]{
     height: 20px;
-    background-color: black;
+    background-color: #0080ff;
 }
 
 div.note[size = "2"]{
     height: 40px;
-    background-color: black;
+    background-color: #0080ff;
 }
 
 div.note[size = "3"]{
     height: 60px;
-    background-color: black;
+    background-color: #0080ff;
 }
 
 div.note[size = "4"]{
     height: 80px;
-    background-color: black;
+    background-color: #0080ff;
 }
 
-div.note[hit = "true"]{box-shadow: 0px 0px 20px white; background-color: pink;}
+div.note[hit = "true"]{box-shadow: 0px 0px 20px white; background-color: rgb(199, 231, 243);}
 
 tile#T0{display:none;}
 
@@ -224,11 +225,11 @@ p{
     
 }
 h1#Thescore{
-    color: rgb(51, 255, 51); 
+    color: yellow; 
     
 }
 h1#text{
-    color: rgb(51, 255, 51);   
+    color: orange;   
 }
 
 p#accuracy{
@@ -238,8 +239,9 @@ p#accuracy{
     background: red;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 20px;
-    text-shadow: 0px 0px 5px white;
+    font-size: 25px;
+    text-shadow: none;
+
     
 }
 p#Thecombo{
@@ -249,8 +251,9 @@ p#Thecombo{
     background: red;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 20px;
-    text-shadow: 0px 0px 5px white;
+    font-size: 25px;
+    text-shadow: none;
+
 }
 
 #S6{width: 20px;}
@@ -261,7 +264,8 @@ p#Thecombo{
     box-sizing: border-box;
 }
 #pacman{
- position:relative;   
+ position:relative;
+ bottom: 1px;
 }
 
 .progress-bar{
@@ -272,12 +276,13 @@ p#Thecombo{
     height: 20px;
     /* background-color: yellow;   */
     border-radius: 13px;
-    padding: px;
+    padding: 5px;
     margin: 0px auto;
 
 }
 .progress{
     top: 10px;
+    bottom: 5px;
     width: 20px;
     height: 15px;
     border-radius: 10px;
@@ -400,5 +405,97 @@ p#Thecombo{
 }
 #Cmusic:hover{
     text-shadow: 0px 0px 30px white;
+}
+#swap {
+    margin: auto;
+    top: 28%;
+    right: 0;
+    bottom: 0;
+    left: 65%;
+    position: fixed;
+
+}
+@keyframes show1{
+    0% {background-image: url(pic2/guitar.png);}
+    25% {background-image: url(pic/guitar.png);}
+    50% {background-image: url(pic2/guitar.png);}
+    100% {background-image: url(pic/guitar.png);}
+}
+@keyframes show2{
+    0% {background-image: url(pic2/guitar-pic.png);}
+    25% {background-image: url(pic/guitar-pic.png);}
+    50% {background-image: url(pic2/guitar-pic.png);}
+    100% {background-image: url(pic/guitar-pic.png);}
+}
+@keyframes show3{
+    0% {background-image: url(pic2/but.png);}
+    100% {background-image: url(pic/but.png);}
+}
+@keyframes show4{
+    0% {background-image: url(pic2/piano.png);}
+    25% {background-image: url(pic/piano.png);}
+    50% {background-image: url(pic2/piano.png);}
+    100% {background-image: url(pic/piano.png);}
+}
+@keyframes show5{
+    0% {background-image: url(pic2/piano-pic.png);}
+    25% {background-image: url(pic/piano-pic.png);}
+    50% {background-image: url(pic2/piano-pic.png);}
+    100% {background-image: url(pic/piano-pic.png);}
+}
+
+#logo1 {
+    width: 476px;
+    height: 476px;
+    background-size:cover;
+    background-image: url(pic2/guitar.png);
+    display: block;
+    position: absolute;
+    animation: show1 2s forwards;
+    animation-delay: 2s;
+    
+}
+#logo2 {
+    width: 476px;
+    height: 476px;
+    background-size:cover;
+    background-image: url(pic2/guitar-pic.png);
+    display: block;
+    position: absolute;
+    animation: show2 2s forwards;
+    animation-delay: 4s;
+    
+}
+#logo3 {
+    width: 476px;
+    height: 476px;
+    background-size:cover;
+    background-image: url(pic2/but.png);
+    display: block;
+    position: absolute;
+    animation: show3 1s forwards;
+    animation-delay: 6s;
+    
+}
+#logo4 {
+    width: 476px;
+    height: 476px;
+    background-size:cover;
+    background-image: url(pic2/piano.png);
+    display: block;
+    position: absolute;
+    animation: show4 2s forwards;
+    animation-delay: 7s;
+    
+}
+#logo5 {
+    width: 476px;
+    height: 476px;
+    background-size:cover;
+    background-image: url(pic2/piano-pic.png);
+    display: block;
+    position: absolute;
+    animation: show5 2s forwards;
+    animation-delay: 9s;
 }
 
