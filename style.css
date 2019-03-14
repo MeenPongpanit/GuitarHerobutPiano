@@ -268,7 +268,7 @@ p#Thecombo{
     position:fixed;
     bottom: 15px;
     left: 25vw;
-    width: 60vw;
+    width: 50vw;
     height: 20px;
     /* background-color: yellow;   */
     border-radius: 13px;
@@ -383,7 +383,7 @@ p#Thecombo{
     width: 120px;
     height: 40px;
     color: magenta;
-    text-shadow: 0px 0px 30px white;
+
 }
 #replay:hover{
     text-shadow: 0px 0px 30px white;
