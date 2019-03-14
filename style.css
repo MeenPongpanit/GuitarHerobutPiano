@@ -8,9 +8,22 @@
     width: 100px;
     border-radius: 10px;
 
-}
 
-#Thecountdown>h1{
+}
+#Thecountdowntext{
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    color:rgb(43, 214, 137);
+}
+#Thecountdowntext:hover{
+    color: rgb(124, 249, 14);
+}
+#Thecountdownnum{
+    position: absolute;
+    visibility: hidden;
+    top: 34%;
+    left: 39%;
     color: rgb(45, 240, 61);
 
 }
@@ -78,7 +91,7 @@ h1 {
     color : red;
 }
 game{
-    margin: 30px auto;
+    margin: 5px auto;
     display:block;
     height: 600px;
     width: 352px;
@@ -226,7 +239,8 @@ p#accuracy{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 20px;
-    text-shadow: none;    
+    text-shadow: 0px 0px 5px white;
+    
 }
 p#Thecombo{
     margin-left: 10%;
@@ -236,7 +250,7 @@ p#Thecombo{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 20px;
-    text-shadow: none;    
+    text-shadow: 0px 0px 5px white;
 }
 
 #S6{width: 20px;}
@@ -252,12 +266,13 @@ p#Thecombo{
 
 .progress-bar{
     position:fixed;
+    bottom: 15px;
     left: 25vw;
-    width: 50vw;
-    height: 15px;
-    /* background-color: yellow; */
+    width: 60vw;
+    height: 20px;
+    /* background-color: yellow;   */
     border-radius: 13px;
-    padding: 3px;
+    padding: px;
     margin: 0px auto;
 
 }
@@ -316,3 +331,74 @@ p#Thecombo{
     transform: rotate(-135deg);
     animation: circle2 0.5s infinite alternate;    
   }
+#model{
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 80%;
+    width: 50%;
+    border-radius: 0.5rem;
+    visibility: hidden;
+}
+#summary{
+    position: absolute;
+    bottom: 70%;
+    left: 35%;
+    font-size: 70px;
+    text-shadow: 0px 0px 10px black;
+}
+#sumscore{
+    position: absolute;
+    top: 20%;
+    left: 39%;
+    font-size: 40px;
+    text-align: center;
+    color: chartreuse;
+    text-shadow: 0px 0px 30px white;
+}
+#resultacc{
+    font-size: 30px;
+    position: absolute;
+    top: 40%;
+    left: 15%;
+    color: orange;
+    text-shadow: 0px 0px 30px white;
+}
+#Mcombo{
+    font-size: 30px;
+    position: absolute;
+    left: 15%;
+    top: 55%;
+    color: red;
+    text-shadow: 0px 0px 30px white;
+}
+#replay{
+    position: absolute;
+    top: 80%;
+    left: 15%;
+    font-size: 30px;
+    width: 120px;
+    height: 40px;
+    color: magenta;
+    text-shadow: 0px 0px 30px white;
+}
+#replay:hover{
+    text-shadow: 0px 0px 30px white;
+}
+#Cmusic{
+    position: absolute;
+    top: 80%;
+    right: 30%;
+    font-size: 30px;
+    width: 120px;
+    height: 40px;
+    color: pink;
+    white-space: nowrap;
+}
+#Cmusic:hover{
+    text-shadow: 0px 0px 30px white;
+}
+
