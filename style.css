@@ -251,8 +251,8 @@ p#Thecombo{
 }
 
 .progress-bar{
-    position:absolute;
-    /* left: 20vw; */
+    position:fixed;
+    left: 25vw;
     width: 50vw;
     height: 15px;
     /* background-color: yellow; */
@@ -262,6 +262,7 @@ p#Thecombo{
 
 }
 .progress{
+    top: 10px;
     width: 20px;
     height: 15px;
     border-radius: 10px;
