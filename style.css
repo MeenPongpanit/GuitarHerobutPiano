@@ -265,16 +265,16 @@ p#Thecombo{
 }
 #pacman{
  position:relative;
- bottom: 1px;
+ bottom: 3px;
 }
 
 .progress-bar{
     position:fixed;
-    bottom: 15px;
+    bottom: 50px;
     left: 25vw;
     width: 50vw;
-    height: 20px;
-    /* background-color: yellow;   */
+    height: 30px;
+    /* background-color: yellow;    */
     border-radius: 13px;
     padding: 5px;
     margin: 0px auto;
@@ -282,7 +282,7 @@ p#Thecombo{
 }
 .progress{
     top: 10px;
-    bottom: 5px;
+    bottom: 10px;
     width: 20px;
     height: 15px;
     border-radius: 10px;
@@ -351,14 +351,14 @@ p#Thecombo{
 #summary{
     position: absolute;
     bottom: 70%;
-    left: 35%;
+    left: 38%;
     font-size: 70px;
     text-shadow: 0px 0px 10px black;
 }
 #sumscore{
     position: absolute;
     top: 20%;
-    left: 39%;
+    left: 41.5%;
     font-size: 40px;
     text-align: center;
     color: chartreuse;
