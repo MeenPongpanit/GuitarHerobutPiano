@@ -71,7 +71,10 @@
             <sharpkey id="bB" x="5.75" status="unpress">
                 <p>U</p>
             </sharpkey>
-            <div id="Thecountdown"><h1 id="Thecountdownnum" onclick="countdown(3);">Start</h1></div>
+            <div id="Thecountdown">
+                <h1 id="Thecountdowntext"onclick="countdown(3);">Start</h1>
+                <h1 id="Thecountdownnum">3s</h1>
+            </div>
         </game>
         <div class="progress-bar">
             <div id="pacman">
@@ -80,7 +83,14 @@
             </div>
             <div class="progress" id="progress"></div>
         </div>
-        
+        <div id="model">
+            <h1 id="summary">Score</h1>
+            <h2 id="sumscore">00000</h2>
+            <h2 id="resultacc">ACC : </h2>
+            <h2 id="Mcombo">Max Combo : </h2>
+            <a href="song1.html"><h2 id="replay">Replay</h2></a>
+            <a href="ChooseMusic.html"><h2 id="Cmusic">Choose Music</h2></a>
+        </div>
 
 
         <audio data-key="C2-4" src="asset/sounduse/C2-4.wav"></audio>
@@ -248,7 +258,7 @@
         <audio data-key="bB4-1" src="asset/sounduse/bB4-1.wav"></audio>
 
 
-<!--  cord  -->
+        <!--  cord  -->
 
 
         <audio data-key="C0-1" src="asset/sounduse/C0-1.wav"></audio>
@@ -290,7 +300,7 @@
         <audio data-key="bF0-2" src="asset/sounduse/bF0-2.wav"></audio>
         <audio data-key="bA0-2" src="asset/sounduse/bA0-2.wav"></audio>
         <audio data-key="bB0-2" src="asset/sounduse/bB0-2.wav"></audio>
-    
+
         <audio data-key="C1-2" src="asset/sounduse/C1-2.wav"></audio>
         <audio data-key="D1-2" src="asset/sounduse/D1-2.wav"></audio>
         <audio data-key="E1-2" src="asset/sounduse/E1-2.wav"></audio>
