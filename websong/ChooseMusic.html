@@ -18,11 +18,11 @@
     </div>
     <div class="note"></div>
     <div class="noteadd"></div>
-    <div id="bottom" class="left"onclick="changesong(-1);">&#10094; Prev</div>
+    <div id="bottom" class="left"onclick="changesong(-1);"></div>
     <div id="entertain">
         <button class="pretty" onclick="playgame();">SELECT</button>
     </div>
-    <div id="bottom" class="right"onclick="changesong(1);">Next &#10095;</div>
+    <div id="bottom" class="right"onclick="changesong(1);"></div>
 
         <div id="songpic" class="beauty b1" song="0">
             <p id="songname">U.N. Owen Was Her?</p>
@@ -31,6 +31,18 @@
     
 </body>
 <script>
+    document.onkeydown = function(e){
+        var code = e.code;
+        if(code == "ArrowLeft"){
+            changesong(-1);
+        }
+        if(code == "ArrowRight"){
+            changesong(1);
+        }
+        if(code == "Space" || code == "Enter"){
+            playgame();
+        }
+    }
     var pagesong = {0:"U.N. Owen Was Her?", 1:"A Cruel Angel's Thesis", 2:"Septette for dead princess"};
     var page = 0;
     function changesong(shift){
