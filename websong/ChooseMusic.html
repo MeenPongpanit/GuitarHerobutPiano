@@ -34,7 +34,8 @@
     var page = 0;
     function changesong(shift){
         page += shift;
-        page = page%3;
+        page = (page+3)%3;
+        console.log(page);
         songpic.setAttribute("song", page);
         songname.innerText = pagesong[page];
     }
