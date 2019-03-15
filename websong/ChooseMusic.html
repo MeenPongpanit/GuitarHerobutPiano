@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Choose Music</title>
     <link rel="stylesheet" href="StyleMusic.css">
 </head>
 
@@ -17,11 +17,33 @@
     </div>
     <div class="note"></div>
     <div class="noteadd"></div>
-    <div id="choose">
-            <a href="song1.html" ><div id = "song1" class="beauty b1"><p>U.N. Owen Was Her?</p></div></a>
-            <a href="song2.html" ><div id = "song2" class="beauty b2"><p>A Cruel Angel's Thesis.</p></div></a>
-            <a href="song3.html" ><div id = "song3" class="beauty b3"><p>Septtete for the dead princess.</p></div></a>
+    <div id="bottom" class="left"onclick="changesong(-1);">&#10094; Prev</div>
+    <div id="entertain">
+        <button class="pretty" onclick="playgame();">SELECT</button>
     </div>
+    <div id="bottom" class="right"onclick="changesong(1);">Next &#10095;</div>
+
+        <div id="songpic" class="beauty b1" song="0">
+            <p id="songname">U.N. Owen Was Her?</p>
+        </div>
+
+    
 </body>
+<script>
+    var pagesong = {0:"U.N. Owen Was Her?", 1:"A Cruel Angel's Thesis", 2:"Septette for dead princess"};
+    var page = 0;
+    function changesong(shift){
+        page += shift;
+        page = page%3;
+        songpic.setAttribute("song", page);
+        songname.innerText = pagesong[page];
+    }
+    function playgame(){
+        page += 1;
+        console.log("song" + page + ".html");
+        window.location.href = "song" + page + ".html";
+    }
+
+</script>
 
 </html>

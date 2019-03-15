@@ -498,4 +498,40 @@ p#Thecombo{
     animation: show5 2s forwards;
     animation-delay: 9s;
 }
+#rank[Getrank = "S"]{
+    background-image: url(images/S.png);
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 54%;
+    right: 10%;
+    background-size: cover;
+}
+#rank[Getrank = "A"]{
+    background-image: url(images/A.png);
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 54%;
+    right: 10%;
+    background-size: cover;
+}
+#rank[Getrank = "B"]{
+    background-image: url(images/B.png);
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 54%;
+    right: 10%;
+    background-size: cover;
+}
+#rank[Getrank = "C"]{
+    background-image: url(images/C.png);
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 54%;
+    right: 10%;
+    background-size: cover;
+}
 

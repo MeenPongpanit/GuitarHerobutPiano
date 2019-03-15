@@ -217,8 +217,18 @@ function playsong(){
                 setTimeout(function(){
                     model.style.visibility = "visible";
                     sumscore.innerText = score;
+                    var acc = ((notedowned - miss)/notedowned*100);
                     resultacc.innerText = "Accuracy : " + ((notedowned - miss)/notedowned*100).toString().slice(0, 5) + "%";
                     Mcombo.innerText = "Max Combo : " + maxcombo;
+                    if(acc >= 90){
+                        rank.setAttribute("Getrank", "S");
+                    }else if(acc >= 80){
+                        rank.setAttribute("Getrank", "A");
+                    }else if(acc >= 65){
+                        rank.setAttribute("Getrank", "B");
+                    }else{
+                        rank.setAttribute("Getrank", "C");
+                    }
                 }, 6400)
             }
         }, songtime*1000/Math.pow(speed, 2)); //ต้อง ^2 เพราะ speed ในการปล่อยเร็วขึ้น n เท่า และ speed ในการตกก็เร็วขึ้น n เท่า (n^2)
